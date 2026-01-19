@@ -1,0 +1,56 @@
+// colors
+
+//$primary-color-100: rgba(30, 104, 171, 1);
+/* $primary-color-100: rgba(25, 135, 199, 1);
+ */
+$primary-color-100: #F8E354;
+$primary-color-90: rgba(30, 104, 171, 0.9);
+$primary-color-80: rgba(30, 104, 171, 0.8);
+$primary-color-70: rgba(30, 104, 171, 0.7);
+$primary-color-60: rgba(30, 104, 171, 0.6);
+$primary-color-50: rgba(30, 104, 171, 0.5);
+$primary-color-40: rgba(30, 104, 171, 0.4);
+$primary-color-30: rgba(30, 104, 171, 0.3);
+$primary-color-20: rgba(30, 104, 171, 0.2);
+$primary-color-10: rgba(30, 104, 171, 0.1);
+
+$secondary-color-100: hsla(0, 0%, 9%, 1);
+$secondary-color-90: hsla(0, 0%, 15%, 1);
+$secondary-color-80: hsla(0, 0%, 22%, 1);
+$secondary-color-70: hsla(0, 0%, 32%, 1);
+$secondary-color-60: hsla(0, 0%, 44%, 1);
+$secondary-color-50: hsla(0, 0%, 55%, 1);
+$secondary-color-40: hsla(0, 0%, 66%, 1);
+$secondary-color-30: hsla(0, 0%, 78%, 1);
+$secondary-color-20: hsla(0, 0%, 88%, 1);
+$secondary-color-10: hsla(0, 0%, 96%, 1);
+
+$alert-dark: hsla(6, 100%, 96%, 1);
+$alert-base: hsla(0, 95%, 76%, 1);
+$alert-light: hsl(359, 46%, 56%);
+$gold-dark: #8F846D;
+$yellow-main: #F8E354;
+$yellow-light: #F9F4EA;
+
+// $alert-dark: hsla(359, 46%, 56%, 1);
+// $alert-base: hsla(0, 95%, 76%, 1);
+// $alert-light: hsla(6, 100%, 96%, 1);
+
+$success-dark: hsla(47, 100%, 87%, 1);
+$success-base: hsla(69, 53%, 60%, 1);
+$success-light: hsla(68, 15%, 49%, 1);
+$success-green: hsl(137, 90%, 35%);
+
+$warning-dark: hsla(25, 100%, 94%, 1);
+$warning-base: hsla(30, 83%, 59%, 1);
+$warning-light: hsla(31, 66%, 49%, 1);
+
+$info-dark: hsla(240, 100%, 97%, 1);
+$info-base: hsla(228, 100%, 78%, 1);
+$info-light: hsla(228, 48%, 57%, 1);
+
+$custom-yellow-color: hsla(45, 100%, 63%, 1);
+$custom-blue-color: #a5c3d2;
+$link-blue-color: hsla(220, 100%, 50%, 1);
+
+$white: hsla(0, 0%, 100%, 1);
