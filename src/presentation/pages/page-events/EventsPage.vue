@@ -412,7 +412,7 @@ export default {
                 sessions: this.eventsGroupedBycategories(cat.id)
               }
             });
-            this.mappedCategories = datamapped;
+            this.mappedCategories = datamapped.filter((it) => it.sessions.length > 0);
             let skip = false;
             if (!isEmpty(currentTab)) {
               let curr = this.categories.find((c) => c == currentTab);
