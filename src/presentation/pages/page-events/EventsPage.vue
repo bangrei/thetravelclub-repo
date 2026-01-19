@@ -38,25 +38,22 @@
         </div>
         <div class="main-content" :class="{ empty: isEmpty(filteredEvents) }">
           <div class="feeds-content">
-            <div class="" 
-              v-for="category in categories"
-              :key="category.id">
-
+            <div class="">
               <div class="event-accordion"
-                v-for="group in eventsGroupedBycategories(category.id)"
-                :key="group.key"
+                v-for="group in mappedCategories"
+                :key="group.category.id"
               >
                 <div class="accordion-header">
-                  <span class="accordion-header-title">{{ category.name }}</span>
+                  <span class="accordion-header-title">{{ group.category.name }}</span>
                   <span
-                    @click="toggleMonth(group.key)"
+                    @click="handleCategoryClick(group.category.id)"
                     class="accordion-toggle material-icons"
-                    >{{ group.key == selectedMonth ? "remove" : "add" }}</span
+                    >{{ group.category.id == selectedCategory ? "remove" : "add" }}</span
                   >
                 </div>
                 <div
                   class="accordion-content"
-                  :class="{ opened: group.key == selectedMonth }"
+                  :class="{ 'opened': group.category.id == selectedCategory }"
                 >
                   <event-block
                     v-for="sess in group.sessions"
@@ -70,41 +67,6 @@
             </div>
           </div>
           <div class="feeds-divider" v-if="isEmpty(feedNavs)"></div>
-          <home-empty-nudge
-            v-if="allNudgesRead && !loading && showFeeds && isEmpty(feedNavs)"
-            heading="Congrats"
-            subHeading="You have read all the messages."
-            message="Come back for more or click the above categories to read again."
-          >
-          </home-empty-nudge>
-
-          <div
-            class="nudge-card-con"
-            v-if="showFeeds"
-            :class="{ 'blurred-data': loadingData }"
-          >
-            <div class="loading-data-con" v-if="loadingData">
-              <div class="loading-data">
-                <div class="dot-loading"></div>
-                <p class="body-2-regular bold loading-text primary-color-70">
-                  Loading ...
-                </p>
-              </div>
-            </div>
-            <div
-              class="nudge-column"
-              v-for="(col, n) in nudgeColumns(validNudges)"
-              :key="n"
-            >
-              <home-nudge-card
-                v-for="nudge in col"
-                :key="nudge.id"
-                :nudge="nudge"
-                @nudge-clicked="nudgeClicked"
-              ></home-nudge-card>
-            </div>
-            <div class="nudge-column" v-for="n in fillerNudges" :key="n"></div>
-          </div>
         </div>
         <div class="inline-content stretch">
           <div class="inline-content-item">
@@ -139,9 +101,6 @@ import utility from "@/presentation/mixins/utility.js";
 import { isEmpty } from "lodash";
 import moment from "moment-timezone";
 import EventBlock from "./components/EventBlock.vue";
-
-import HomeEmptyNudge from "../page-feeds/components/HomeEmptyNudge.vue";
-import HomeNudgeCard from "../page-feeds/components/HomeNudgeCard.vue";
 import ActivitiesCarousel from "./components/ActivitiesCarousel.vue";
 
 export default {
@@ -150,8 +109,6 @@ export default {
   components: {
     LayoutVariantTwo,
     EventBlock,
-    HomeNudgeCard,
-    HomeEmptyNudge,
     ActivitiesCarousel
   },
   data() {
@@ -172,6 +129,7 @@ export default {
       selectedMonth: null,
       selectedCategory: "",
       categories: [],
+      mappedCategories: [],
       nudges: [],
       selectedTagNames: [],
       isForYou: false,
@@ -386,7 +344,6 @@ export default {
       if (!this.selectedCategory) return [];
       let events = this.events.filter((ev) => ev.eventCategories.map((c) => c.id).includes(id));
       if (isEmpty(events)) return [];
-      let mapped = [];
       let sessions = [];
       for(let n = 0; n < events.length; n++){
         let ev = events[n];
@@ -399,22 +356,7 @@ export default {
         }));
         sessions = [...sessions, ...sess];
       }
-      for(let i = 0; i < sessions.length; i++){
-        let one = sessions[i];
-        let ix = -1;
-        if(!isEmpty(mapped)){
-          ix = mapped?.findIndex((it) => it.key == `${one.month} ${one.year}`);
-        }
-        if(ix >= 0){
-          mapped[ix].sessions.push(one);
-        } else {
-          mapped.push({
-            key: `${one.month} ${one.year}`,
-            sessions: [one]
-          })
-        }
-      }
-      return mapped;
+      return sessions;
     },
     async initEvents() {
       let stateEvent = this.$store.getters.getStateEventsPage;
@@ -454,7 +396,7 @@ export default {
 
           events.forEach((ev) => {
             if (!this.years.includes(ev.year)) this.years.push(ev.year);
-            let cats = ev.eventCategories.filter((ec) => !this.categories.map((c) => c.id).includes(ec.id));
+            let cats = ev.eventCategories.filter((ec) => !this.categories.map((c) => c.name).includes(ec.name));
             this.categories = [...this.categories, ...cats];
           });
           if(!isEmpty(this.categories)){
@@ -463,6 +405,14 @@ export default {
               return a.sortIndex - b.sortIndex;
             });
             this.selectedCategory = this.categories[0].id;
+            let cats = JSON.parse(JSON.stringify(this.categories));
+            let datamapped = cats.map((cat) => {
+              return {
+                category: cat,
+                sessions: this.eventsGroupedBycategories(cat.id)
+              }
+            });
+            this.mappedCategories = datamapped;
             let skip = false;
             if (!isEmpty(currentTab)) {
               let curr = this.categories.find((c) => c == currentTab);
@@ -519,9 +469,6 @@ export default {
       };
       this.$store.dispatch("setStateEventsPage", payload);
       this.setFilteredEvents();
-    },
-    toggleMonth(month) {
-      this.selectedMonth = this.selectedMonth == month ? null : month;
     },
   },
   async created() {
