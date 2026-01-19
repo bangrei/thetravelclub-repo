@@ -51,7 +51,7 @@
                     >{{ group.category.id == selectedCategory ? "remove" : "add" }}</span
                   >
                 </div>
-                <div
+                <div v-if="group.category.id == selectedCategory"
                   class="accordion-content"
                   :class="{ 'opened': group.category.id == selectedCategory }"
                 >
@@ -324,10 +324,6 @@ export default {
         ev.sessions = sessions;
         return ev;
       });
-      if (this.selectedCategory) {
-        let data = this.eventsGroupedBycategories(this.selectedCategory);
-        if(!isEmpty(data)) this.selectedMonth = data[0].key;
-      }
     },
     async storeChanged() {
       try {
@@ -913,7 +909,7 @@ export default {
     position: relative;
     padding-inline: 24px;
     &::before {
-      width: calc(100% - 48px);
+      width: 100%;
       margin-inline: auto;
       height: 1px;
       content: "";
@@ -947,6 +943,7 @@ export default {
     &.opened {
       padding-block: 24px;
       max-height: 10000px;
+      min-height: 400px;
       opacity: 1;
     }
   }

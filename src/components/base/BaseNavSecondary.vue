@@ -1,9 +1,6 @@
 <template>
   <div class="head-secondary">
-    <span
-      ><a href='https://hydroflask.ph/' target="_blank"> Find the perfect Hydro Flask for your next match at our official stores
-      or browse our website today.</a></span
-    >
+    <span>Use agent code <b>TheTravelClub</b> when filling the application form to receive discounts and perks at The Travel Club stores</span>
   </div>
 </template>
 
