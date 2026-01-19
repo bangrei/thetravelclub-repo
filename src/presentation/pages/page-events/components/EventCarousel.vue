@@ -4,7 +4,7 @@
 		:transition="1000" 
 		:wrap-around="true" 
 		:autoplay="false" 
-		:itemsToShow="isDesktop ? 3 : 2"
+		:itemsToShow="slidesPerView"
 		@mouseover="togglePlay($event)" 
 		@mouseleave="togglePlay($event)" 
 		@click="togglePlay($event)">
