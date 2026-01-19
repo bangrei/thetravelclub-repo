@@ -27,14 +27,14 @@
       </div>
       <div class="auth-content" v-else>
         <div class="nav-elems">
-          <div
+          <!-- <div
             class="nav-elem"
             :class="{ active: activeNav == 'feeds' }"
             @click="goTo('FeedPage')"
           >
             <span class="material-icons-outlined">person</span>
             <span class="nav-label">Feeds</span>
-          </div>
+          </div> -->
           <div
             class="nav-elem"
             :class="{ active: activeNav == 'checkout' }"
