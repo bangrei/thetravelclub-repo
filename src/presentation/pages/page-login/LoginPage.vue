@@ -28,7 +28,7 @@
 								<span class="tnc-item" @click="goTo('PrivacyPolicy')">Privacy Policy</span>
 							</div>-->
               <div class="inner">
-                <img src="@/assets/images/hydro-logo-black.png" />
+                <img src="@/assets/images/ttc-logo-black.png" />
                 <div class="copyright">
                   © Copyright {{ thisYear }}, Hydroflask. All rights reserved.
                 </div>

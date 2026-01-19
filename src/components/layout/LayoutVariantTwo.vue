@@ -8,10 +8,10 @@
     <div class="sd-header" :class="{ 'with-logo': showMainLogo }">
       <div class="sd-header-logo-con" v-if="showMainLogo">
         <img
-          width="120"
-          height="30"
-          alt="rxc logo"
-          :src="require('@/assets/images/hydro-logo-white.png')"
+          width="250"
+          height="100"
+          alt="TTC logo"
+          :src="require('@/assets/images/ttc-logo-white.png')"
         />
       </div>
       <slot name="header"></slot>
@@ -40,7 +40,7 @@
 					<span class="tnc-item" @click="goToPrivacyPolicy">Privacy Policy</span>
 				</div>-->
         <div class="inner">
-          <img src="@/assets/images/hydro-logo-black.png" />
+          <img src="@/assets/images/ttc-logo-black.png" />
           <div class="copyright">
             © Copyright {{ thisYear }}, Hydroflask. All rights reserved.
           </div>
@@ -239,7 +239,7 @@ export default {
 
     img {
       margin: 0 auto;
-      width: 150px;
+      width: 250px;
       display: block;
       margin-bottom: 10px;
     }

@@ -6,13 +6,13 @@
           <!-- <source type="image/avif" :srcset="require('@/assets/images/hydro-logo-black.png')"/> -->
           <source
             type="image/png"
-            :srcset="require('@/assets/images/hydro-logo-white.png')"
+            :srcset="require('@/assets/images/ttc-logo-white.png')"
           />
           <img
-            width="100"
-            height="50"
-            alt="hydroflask logo"
-            :src="require('@/assets/images/hydro-logo-white.png')"
+            width="250"
+            height="100"
+            alt="TTC logo"
+            :src="require('@/assets/images/ttc-logo-white.png')"
           />
         </picture>
       </div>

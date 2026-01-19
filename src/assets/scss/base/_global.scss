@@ -169,9 +169,10 @@ body {
 @media (min-width: 672px) {
   .header-con {
     padding: 24px 7% !important;
+    padding-left: calc(7% - 32px) !important;
     max-height: 90px !important;
     .header-logo-con {
-      max-width: 140px !important;
+      max-width: 250px !important;
     }
 
     .header-title {
