@@ -68,6 +68,11 @@
                         </base-accordion>
                     </base-accordion>
                 </div>
+                <button 
+                    @click="goToExternalLink" 
+                    v-if="eventDetails?.externalLink" 
+                    class="book-now"
+                >Sign Up <i class="material-icons-outlined">launch</i></button>
                 <div class="event-label-more bold" v-if="!isEmpty(eventDetails.moreEvents)">More Like This</div>
                 <div class="cards">
                     <event-block v-for="ev in eventDetails.moreEvents"
