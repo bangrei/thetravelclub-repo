@@ -24,8 +24,12 @@
               <p>
                 EtonHouse is an international school from Singapore founded on the British learning system in 1995 in pursuit of high-quality, 
                 research-based, and inquiry-driven education. 
+              </p>
+              <p>
                 Today, they are present in over 100 schools across 12 countries, continuing to expand to meet the growing demand 
                 for quality education.
+              </p>
+              <p>
                 As part of the global education group, true to its name, EtonHouse International School Japan has opened its campus 
                 internationally for children across the globe to fly in and join their English-language Summer Camp designed to be 
                 enjoyable for all children regardless English language proficiency.
@@ -1053,6 +1057,11 @@ export default {
         padding: 20px 0;
       }
     }
+  }
+}
+@media (max-width: 800px) {
+  .inline-content {
+    flex-direction: column !important;
   }
 }
 

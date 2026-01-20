@@ -34,19 +34,14 @@
         v-if="!hideFootNote"
         :class="{ invisible: showLoadingScreen }"
       >
-        <!--<span>&copy; {{ thisYear }} Columbia Hike Society</span>
-				<div class="footnote-tnc">
-					<span class="tnc-item" @click="goToTermsOfUse">Terms of Use</span>
-					<span class="tnc-item" @click="goToPrivacyPolicy">Privacy Policy</span>
-				</div>-->
         <div class="inner">
           <img src="@/assets/images/ttc-logo-black.png" />
           <div class="copyright">
-            © Copyright {{ thisYear }}, Hydroflask. All rights reserved.
+            © Copyright {{ thisYear }}, The Travel Club. All rights reserved.
           </div>
           <div class="links">
-            <router-link to="/terms-of-use">Terms of Use</router-link>
-            <router-link to="/privacy-policy">Privacy Policy</router-link>
+            <a target="_blank" href="https://thetravelclub.ph/policies/terms-of-service">Terms of Use</a>
+            <a target="_blank" href="https://thetravelclub.ph/policies/privacy-policy">Privacy Policy</a>
           </div>
         </div>
       </div>

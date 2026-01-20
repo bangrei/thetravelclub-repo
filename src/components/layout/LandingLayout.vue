@@ -9,7 +9,7 @@
         width="160"
         height="80"
         alt="rxc logo"
-        :src="require('@/assets/images/hydro-logo-black.png')"
+        :src="require('@/assets/images/ttc-logo-black.png')"
       />
       <slot name="content"></slot>
     </div>

@@ -30,11 +30,11 @@
               <div class="inner">
                 <img src="@/assets/images/ttc-logo-black.png" />
                 <div class="copyright">
-                  © Copyright {{ thisYear }}, Hydroflask. All rights reserved.
+                  © Copyright {{ thisYear }}, The Travel Club. All rights reserved.
                 </div>
                 <div class="links">
-                  <router-link to="/terms-of-use">Terms of Use</router-link>
-                  <router-link to="/privacy-policy">Privacy Policy</router-link>
+                  <a target="_blank" href="https://thetravelclub.ph/policies/terms-of-service">Terms of Use</a>
+                  <a target="_blank" href="https://thetravelclub.ph/policies/privacy-policy">Privacy Policy</a>
                 </div>
               </div>
             </div>
@@ -158,7 +158,7 @@ export default {
 
     img {
       margin: 0 auto;
-      width: 115px;
+      width: 250px;
       display: block;
       margin-bottom: 10px;
     }
