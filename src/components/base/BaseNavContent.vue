@@ -189,7 +189,7 @@ export default {
     align-items: flex-start;
     gap: 24px;
     .nav-elem {
-      color: $secondary-color-100;
+      color: $white;
       cursor: pointer;
       height: 70px;
       border-radius: 50%;
@@ -281,7 +281,7 @@ export default {
           align-items: center;
           justify-content: center;
           border-radius: 50%;
-          background: $primary-color-100;
+          background: $gold-dark;
           color: $white;
           font-weight: bolder;
           font-size: 1.5em;
@@ -292,7 +292,7 @@ export default {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          color: $primary-color-100;
+          color: $gold-dark;
           .user-name {
             font-weight: bolder;
           }

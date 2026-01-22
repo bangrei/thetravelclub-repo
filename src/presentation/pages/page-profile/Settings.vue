@@ -56,7 +56,7 @@
                 <div class="form-group">
                     <div class="checkbox">
                         <input type="checkbox" v-model="marketingEmails">
-                        <span class="checkbox-label">Subscribe to Columbia Hike Society Newsletters & notifications</span>
+                        <span class="checkbox-label">Subscribe to {{ appName }} Newsletters & notifications</span>
                     </div>
                 </div>
                 <div class="button" @click="save()">Save</div>
@@ -119,7 +119,11 @@ export default {
 		};
 	},
 	watch: {},
-	computed: {},
+	computed: {
+        appName(){
+            return this.$store.getters.getAppName;
+        }
+    },
     methods: {
         toggleDeleteAccount() {
             this.askDeleteAccount = !this.askDeleteAccount;

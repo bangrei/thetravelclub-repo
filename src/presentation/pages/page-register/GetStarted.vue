@@ -5,7 +5,7 @@
         <div class="body-wrapper" v-if="getStarted">
           <div class="body-con">
             <p class="title-text heading-4">
-              <span>Welcome to Hydroflask!</span>
+              <span>Welcome to {{ appName }}!</span>
             </p>
             <!-- <p class="header-text heading-4">
 							<span>Let us get to know you first!</span>
@@ -40,7 +40,7 @@
               <span>Congrats!</span>
             </p>
             <p class="title-text heading-4">
-              <span>And welcome to Hydroflask</span>
+              <span>And welcome to {{ appName }}</span>
             </p>
             <p class="sub-title-text body-1-normal regular secondary-color-60">
               Let’s onboard together!
@@ -63,7 +63,6 @@
 <script>
 import StartPageLayout from "@/components/layout/StartPageLayout.vue";
 import utility from "@/presentation/mixins/utility.js";
-// import { goTo } from "@/presentation/mixins/utility.js";
 
 export default {
   name: "GetStarted",
@@ -74,8 +73,13 @@ export default {
   data() {
     return {
       getStarted: false,
-      messages: ["Getstarted with Hydroflask"],
+      messages: [],
     };
+  },
+  computed: {
+    appName(){
+      return this.$store.getters.getAppName;
+    }
   },
   methods: {
     start() {
@@ -83,11 +87,9 @@ export default {
         this.getStarted = true;
         return;
       }
-      /* hide for now:
-			if(this.$route.params.registered || false == true) {
-				return goTo("SurveyPage", { nudgeId: "c67bdd42918f4a09b0706ff76ca8c155", getStarted: true });
+      if (this.$route.query.externalLink) {
+				return window.location.href = this.$route.query.externalLink;
 			}
-			*/
       if (this.$route.query.redirect) {
         return this.$router.replace(this.$route.query.redirect);
       }
@@ -96,6 +98,9 @@ export default {
       });
     },
   },
+  created(){
+    this.messages = [`Get started with ${this.appName}`];
+  }
 };
 </script>
 

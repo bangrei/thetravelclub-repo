@@ -126,7 +126,8 @@ export default {
 				if (login.success) {
 					this.$store.dispatch("setLoginToken", login.authToken);
 					this.$store.dispatch("setCustomer", login.customer);
-					if (this.$route.query.externalLink) {
+					let externalLink = this.$route.query.externalLink
+					if (externalLink && !this.congratulateUser) {
 						return window.location.href = this.$route.query.externalLink;
 					}
 					if (this.redirect) {
@@ -136,6 +137,17 @@ export default {
 						this.$router.push(this.$route.query.redirect);
 					} else {
 						if (this.congratulateUser) {
+							if(externalLink){
+								return this.$router.push({
+									name: "GetStarted",
+									params: {
+										registered: true
+									},
+									query: {
+										externalLink: externalLink
+									}
+								});
+							}
 							this.$router.push({
 								name: "GetStarted",
 								params: {

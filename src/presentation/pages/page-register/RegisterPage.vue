@@ -30,7 +30,7 @@
           <div class="tnc-wrapper">
             By clicking "Continue", you agree to the
             <a :href="tncLink" target="_blank" class="link no-underlined"
-              >Hydroflask Terms of Service</a
+              >{{ appName }} Terms of Service</a
             >
           </div>
           <div class="register-progress-con">
@@ -195,9 +195,13 @@ export default {
     },
   },
   computed: {
+    appName(){
+      return this.$store.getters.getAppName;
+    },
     tncLink() {
-      let r = this.$router.resolve({ name: "TermsOfUse" });
-      return r.path;
+      return "https://thetravelclub.ph/policies/terms-of-service";
+      // let r = this.$router.resolve({ name: "TermsOfUse" });
+      // return r.path;
     },
     ...mapGetters({
       currentAnswer: "register/getCurrentAnswer",
@@ -231,6 +235,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 .register-progress-con {
   width: 100%;
@@ -260,9 +265,8 @@ export default {
 }
 @media (min-width: 672px) {
   .register-page-con {
-    padding: 24px 0 !important;
+    padding: 0 !important;
     width: 100%;
-    max-width: 800px;
     margin: auto;
   }
   .img-as-bground {

@@ -15,7 +15,7 @@
       <div v-if="isEmpty(order) && isEmpty(booking)" class="empty-checkout">
         <img
           :src="require('@/assets/images/home-empty.png')"
-          alt="Hydroflask"
+          :alt="appName"
           width="300"
           height="300"
         />
@@ -166,7 +166,7 @@
               <span class="checkbox-label" style="white-space: nowrap">
                 I accept the
                 <a :href="tncLink" target="_blank" class="link no-underlined"
-                  >Hydroflask Terms of Service</a
+                  >{{ appName }} Terms of Service</a
                 >
               </span>
             </div>
@@ -416,12 +416,16 @@ export default {
   },
   watch: {},
   computed: {
+    appName(){
+      return this.$store.getters.getAppName;
+    },
     allowedPaymentTypes() {
       return this.$store.getters.getAllowedPaymentTypes;
     },
     tncLink() {
-      let r = this.$router.resolve({ name: "TermsOfUse" });
-      return r.path;
+      return "https://thetravelclub.ph/policies/terms-of-service";
+      // let r = this.$router.resolve({ name: "TermsOfUse" });
+      // return r.path;
     },
     totalAmount() {
       let amount = 0;
@@ -908,7 +912,7 @@ export default {
           return this.showNotification(
             "alert",
             "error_outline",
-            "Please accept Hydroflask Terms of Use Terms of Service"
+            `Please accept ${this.appName} Terms of Use Terms of Service`
           );
 
         /*

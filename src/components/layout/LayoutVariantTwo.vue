@@ -37,7 +37,7 @@
         <div class="inner">
           <img src="@/assets/images/ttc-logo-black.png" />
           <div class="copyright">
-            © Copyright {{ thisYear }}, The Travel Club. All rights reserved.
+            © Copyright {{ thisYear }}, {{ appName }}. All rights reserved.
           </div>
           <div class="links">
             <a target="_blank" href="https://thetravelclub.ph/policies/terms-of-service">Terms of Use</a>
@@ -111,6 +111,7 @@ export default {
   },
   setup(props, context) {
     const store = useStore();
+    const appName = computed(() => store.getters.getAppName);
     const notification = computed(() => store.state.notification);
     const hasHeaderSlot = computed(() => !!context.slots.header);
     const hasFooterSlot = computed(() => !!context.slots.footer);
@@ -128,6 +129,7 @@ export default {
       hasHeaderSlot,
       hasFooterSlot,
       thisYear,
+      appName,
       goToTermsOfUse,
       goToPrivacyPolicy,
     };

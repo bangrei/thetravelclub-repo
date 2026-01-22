@@ -22,15 +22,10 @@
               @toggle-loading="toggleLoading"
             ></login-email>
             <div class="body-footnote">
-              <!--<span>&copy; {{ thisYear }} Columbia Hike Society 2</span>
-							<div class="footnote-tnc">
-								<span class="tnc-item" @click="goTo('TermsOfUse')">Terms of Use</span>
-								<span class="tnc-item" @click="goTo('PrivacyPolicy')">Privacy Policy</span>
-							</div>-->
               <div class="inner">
                 <img src="@/assets/images/ttc-logo-black.png" />
                 <div class="copyright">
-                  © Copyright {{ thisYear }}, The Travel Club. All rights reserved.
+                  © Copyright {{ thisYear }}, {{ appName }}. All rights reserved.
                 </div>
                 <div class="links">
                   <a target="_blank" href="https://thetravelclub.ph/policies/terms-of-service">Terms of Use</a>
@@ -76,6 +71,11 @@ export default {
       inited: false,
     };
   },
+  computed: {
+    appName(){
+      return this.$store.getters.getAppName;
+    }
+  },
   methods: {
     toggleLoading(val) {
       this.loading = val == true;
@@ -86,8 +86,17 @@ export default {
     },
     async handleProceedRegister(email) {
       let params = { passedEmail: email };
-      if (this.$route.query.redirect)
-        params.redirect = this.$route.query.redirect;
+      if (this.$route.query.redirect) params.redirect = this.$route.query.redirect;
+      if (this.$route.query.externalLink) {
+        let externalLink = this.$route.query.externalLink;
+        return this.$router.push({
+          name: "RegisterPage",
+          params,
+          query: {
+            externalLink: externalLink
+          }
+        });
+      }
       this.goToWithParams("RegisterPage", params);
     },
   },

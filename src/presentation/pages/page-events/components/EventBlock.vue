@@ -81,7 +81,7 @@ export default {
         enableBooking: {
             type: Boolean,
             default: true
-        }
+        },
     },
     data() {
 		return {
@@ -90,6 +90,9 @@ export default {
 		};
     },
     computed: {
+        isHideRating(){
+            return this.$store.getters.getHideRating == true;
+        },
         registeredSessions() {
             if (isEmpty(this.item)) return 0;
             let reg = this.item.maxSpot - this.item.spotLeft;
@@ -141,7 +144,7 @@ export default {
             }
             this.item = event;
             if (this.displayOnly) return;
-            let ratingData = await this.retrieveReviewRatings(event.parent.id);
+            let ratingData = this.isHideRating == true ? null : await this.retrieveReviewRatings(event.parent.id);
             this.item.ratingData = ratingData;
         },
         doClearBookings() {

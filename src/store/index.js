@@ -7,6 +7,7 @@ import survey from "./modules/survey";
 export default createStore({
   state: {
     inited: false,
+    appName: process.env.VUE_APP_NAME || "The Travel Club",
     appVersion:
       process.env.NODE_ENV === "production" ? process.env.VERSION : "0.0.0",
     token: localStorage.getItem("login-token") || "",
@@ -74,8 +75,12 @@ export default createStore({
     allowedPaymentTypes: ["OFFLINE", "CASH", "PAYMAYA"],
     eventBanner: null,
     loginBanner: null,
+    hideRating: true,
   },
   mutations: {
+    setHideRating(state, hidden) {
+      state.hideRating = hidden == true;
+    },
     setEventBanner(state, banner) {
       state.eventBanner = banner;
     },
@@ -287,6 +292,9 @@ export default createStore({
     },
   },
   actions: {
+    setHideRating({ commit }, hidden) {
+      commit("setHideRating", hidden);
+    },
     setEventBanner({ commit }, banner) {
       commit("setEventBanner", banner);
     },
@@ -458,6 +466,12 @@ export default createStore({
     },
   },
   getters: {
+    getAppName(state){
+      return state.appName;
+    },
+    getHideRating(state){
+      return state.hideRating == true;
+    },
     getEventBanner(state) {
       //return state.eventBanner || require("@/assets/images/event-bg-new3.jpeg");
       return (

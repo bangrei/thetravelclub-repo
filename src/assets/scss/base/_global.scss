@@ -777,7 +777,7 @@ body {
       font-size: 0.8em;
       color: $secondary-color-70;
       &.active {
-        color: $primary-color-80;
+        color: $gold-dark;
       }
     }
   }
@@ -823,7 +823,7 @@ body {
     &:checked + * {
       &::before {
         content: "check_box";
-        color: $primary-color-100;
+        color: $gold-dark;
       }
     }
   }
@@ -905,7 +905,7 @@ body {
       font-size: 0.8em;
       color: $secondary-color-70;
       &.active {
-        color: $primary-color-70;
+        color: $gold-dark;
       }
     }
 
@@ -964,7 +964,7 @@ body {
     &:checked + * {
       &::before {
         content: "radio_button_checked";
-        color: $primary-color-100;
+        color: $gold-dark;
       }
     }
   }

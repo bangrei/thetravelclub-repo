@@ -82,7 +82,7 @@
                         :selectedCategory="ev.year">
                     </event-block>
                 </div>
-                <div class="rating-reviews" v-if="isLoggedIn">
+                <div class="rating-reviews" v-if="isLoggedIn && !isHideRating">
                     <h3 class="reviews-headline">Rating & Reviews of {{ eventDetails.name }}</h3>
                     <div class="reviews-summary">
                         <div class="summary-rating">
@@ -344,6 +344,9 @@ export default {
 	},
 	watch: {},
     computed: {
+        isHideRating(){
+            return this.$store.getters.getHideRating == true;
+        },
         eventBanner() {
             let image = this.$store.getters.getEventBanner;
             if(this.eventDetails?.banners.length > 0){
@@ -570,6 +573,7 @@ export default {
             this.writeReview = true;
         },
         async setReviewRatings() {
+            if(this.isHideRating) return;
             let res = await this.retrieveReviewRatings(this.eventDetails.id);
             this.reviewsList = res.reviewsList;
             this.totalRatings = res.totalRatings;

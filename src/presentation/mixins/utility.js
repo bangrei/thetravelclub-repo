@@ -192,7 +192,7 @@ export default {
       }
       this.$store.dispatch("setCuratedBrands", []);
       await this.retrieveFavorites(skip);
-      await this.retrieveMenu(outletCode);
+      await this.retrieveMenu(outletCode, skip);
       this.$store.dispatch("setInited", true);
       callback();
     },
@@ -219,10 +219,9 @@ export default {
       }
     },
     async retrieveMenu() {
-      let outletCode =
-        arguments.length > 0 && arguments[0] !== undefined
-          ? arguments[0]
-          : null;
+      let outletCode = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : null;
+      let skip = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+      if(skip) return;
       let products = [];
       let categories = [];
       let tags = [];
