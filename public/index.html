@@ -1,52 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0">
+		<meta name="description"
+			content="<%= htmlWebpackPlugin.options.description %>">
+		<meta name="keyword" content="<%= htmlWebpackPlugin.options.keyword %>">
+		<meta name="google" content="notranslate">
+		<meta name="robots" content="index, follow">
+		<meta name="referrer" content="no-referrer">
 
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width,initial-scale=1.0">
-	<meta name="description" content="<%= htmlWebpackPlugin.options.description %>">
-	<meta name="keyword" content="<%= htmlWebpackPlugin.options.keyword %>">
-	<meta name="google" content="notranslate">
-	<meta name="robots" content="index, follow">
-	<meta name="referrer" content="no-referrer">
+		<meta property="og:site_name"
+			content="<%= htmlWebpackPlugin.options.title %>">
+		<meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
+		<meta property="og:type" content="website">
+		<meta property="og:description"
+			content="<%= htmlWebpackPlugin.options.description %>">
+		<meta property="og:image"
+			content="<%= VUE_APP_BFM_URL %>/img/icons/ttc-logo-black.png">
+		<meta property="og:url" content="<%= VUE_APP_BFM_URL %>">
+		<meta name="google-site-verification"
+			content="v8PJIbsII7GOvp49hlPbdLbIvqgINKdOJ8ON6nbsRyA" />
 
-	<meta property="og:site_name" content="<%= htmlWebpackPlugin.options.title %>">
-	<meta property="og:title" content="<%= htmlWebpackPlugin.options.title %>">
-	<meta property="og:type" content="website">
-	<meta property="og:description" content="<%= htmlWebpackPlugin.options.description %>">
-	<meta property="og:image" content="<%= VUE_APP_BFM_URL %>/img/icons/ttc-logo-black.png">
-	<meta property="og:url" content="<%= VUE_APP_BFM_URL %>">
-	<meta name="google-site-verification" content="v8PJIbsII7GOvp49hlPbdLbIvqgINKdOJ8ON6nbsRyA" />
-
-	<link rel="apple-touch-icon" sizes="180x180" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/favicon-16x16.png">
-	<link rel="manifest" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/site.webmanifest">
-	<title>
-		<%= htmlWebpackPlugin.options.title %>
-	</title>
-	<meta name="google-site-verification" content="tRAOnFxHcOwVDshlUdkSSiL1U6jNYdmZHqVV7h1znCE" />
-	<!-- Google Tag Manager -->
-	<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		<link rel="apple-touch-icon" sizes="180x180" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/favicon-16x16.png">
+		<link rel="manifest" href="<%= VUE_APP_BFM_URL %>/ttc-favicon/site.webmanifest">
+		<title><%= htmlWebpackPlugin.options.title %></title>
+		<meta name="google-site-verification"
+			content="tRAOnFxHcOwVDshlUdkSSiL1U6jNYdmZHqVV7h1znCE" />
+		<!-- Google Tag Manager -->
+		<!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 		})(window,document,'script','dataLayer','GTM-T8X488Z');</script> -->
-	<!-- End Google Tag Manager -->
-</head>
-
-<body>
-	<!-- Google Tag Manager (noscript) -->
-	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T8X488Z" height="0" width="0"
-			style="display:none;visibility:hidden"></iframe></noscript>
-	<!-- End Google Tag Manager (noscript) -->
-	<noscript>
-		<strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+		<!-- End Google Tag Manager -->
+		<!-- Google tag (gtag.js) -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-VCQH0LXFS1"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() { dataLayer.push(arguments); }
+			gtag('js', new Date());
+			gtag('config', 'G-VCQH0LXFS1');
+		</script>
+	</head>
+	<body>
+		<!-- Google Tag Manager (noscript) -->
+		<!-- <noscript><iframe
+				src="https://www.googletagmanager.com/ns.html?id=GTM-T8X488Z"
+				height="0" width="0"
+				style="display:none;visibility:hidden"></iframe></noscript> -->
+		<!-- End Google Tag Manager (noscript) -->
+		<noscript>
+			<strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
 				properly without JavaScript enabled. Please enable it to continue.</strong>
-	</noscript>
-	<div id="app"></div>
-	<!-- built files will be auto injected -->
-</body>
-
+		</noscript>
+		<div id="app"></div>
+		<!-- built files will be auto injected -->
+	</body>
 </html>

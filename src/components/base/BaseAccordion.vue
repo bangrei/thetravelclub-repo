@@ -13,13 +13,19 @@ export default {
 			default: "",
 			required: false,
 		},
+		initOpen: {
+			type: Boolean,
+			default: false
+		}
 	},
 	data() {
 		return {
 			isClosed: false,
 		};
 	},
-
+	created() {
+		if(this.initOpen) this.isClosed = true;
+	},
 	methods: {
 		toggleAccordion: function () {
 			this.isClosed = !this.isClosed;

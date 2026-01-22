@@ -14,6 +14,17 @@ import moment from "moment-timezone";
 import router from "../../router";
 export default {
   methods: {
+    openExternalLink(link, callback){
+      if(!link) return;
+      if(!callback) callback = () => {};
+      const a = document.createElement('a');
+      a.href = link;
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+      a.click();
+      a.remove();
+      callback();
+    },
     isEmpty(expression) {
       return isEmpty(expression);
     },

@@ -271,6 +271,7 @@ export default {
                     cursor: pointer;
                     font-weight: bold;
                     font-size: small;
+                    text-align: center;
                     &:hover{
                         filter: opacity(0.7);
                     }

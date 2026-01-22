@@ -169,7 +169,13 @@ export default {
 			if (callback) return callback({ success: true });
 			if (this.$route.query.reinit) this.$store.dispatch("setInited", false);
 			if (this.$route.query.externalLink) {
-				return window.location.href = this.$route.query.externalLink;
+				let externalLink = this.$route.query.externalLink;
+				// return window.location.href = this.$route.query.externalLink;
+				return this.openExternalLink(externalLink, () => {
+					this.$router.replace({
+						name: 'EventsPage'
+					});
+				});
 			}
 			if (this.$route.query.redirect) {
 				console.log(this.$route.query);
@@ -205,7 +211,16 @@ export default {
 			this.$store.dispatch("setCustomer", response.customer);
 			if (this.$route.query.reinit) this.$store.dispatch("setInited", false);
 			if (this.$route.query.externalLink) {
-				return window.location.href = this.$route.query.externalLink;
+				let externalLink = this.$route.query.externalLink;
+				return this.$router.replace({
+					name: "GetStarted",
+					params: {
+						registered: true
+					},
+					query: {
+						externalLink: externalLink
+					}
+				});
 			}
 			if (this.$route.query.redirect) {
 				return this.$router.push(this.$route.query.redirect);

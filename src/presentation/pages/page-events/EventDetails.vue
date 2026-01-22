@@ -463,7 +463,8 @@ export default {
                     },
                 });
             }
-            window.location.href = this.eventDetails.externalLink;
+            this.openExternalLink(this.eventDetails.externalLink);
+            // window.location.href = this.eventDetails.externalLink;
         },
         zoomImage(imageId) {
             let imgUrl = this.getImage(imageId);

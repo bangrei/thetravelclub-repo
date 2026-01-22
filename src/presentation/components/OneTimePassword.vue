@@ -128,7 +128,10 @@ export default {
 					this.$store.dispatch("setCustomer", login.customer);
 					let externalLink = this.$route.query.externalLink
 					if (externalLink && !this.congratulateUser) {
-						return window.location.href = this.$route.query.externalLink;
+						// return window.location.href = this.$route.query.externalLink;
+						return this.openExternalLink(externalLink, () => {
+							this.goTo("EventsPage");
+						});
 					}
 					if (this.redirect) {
 						return this.$router.push(this.redirect);

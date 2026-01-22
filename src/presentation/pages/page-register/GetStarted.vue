@@ -88,7 +88,13 @@ export default {
         return;
       }
       if (this.$route.query.externalLink) {
-				return window.location.href = this.$route.query.externalLink;
+				// return window.location.href = this.$route.query.externalLink;
+        let externalLink = this.$route.query.externalLink
+        return this.openExternalLink(externalLink, () => {
+          this.$router.push({
+            name: "EventsPage",
+          });
+        });
 			}
       if (this.$route.query.redirect) {
         return this.$router.replace(this.$route.query.redirect);

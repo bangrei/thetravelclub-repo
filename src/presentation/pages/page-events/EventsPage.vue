@@ -42,23 +42,14 @@
         </div>
         <div class="main-content" :class="{ empty: isEmpty(filteredEvents) }">
           <div class="feeds-content">
-            <div class="">
-              <div class="event-accordion"
+            <div class="events-block">
+              <base-accordion
                 v-for="group in mappedCategories"
                 :key="group.category.id"
+                :accordion-title="group.category.name"
+                :initOpen="true"
               >
-                <div class="accordion-header">
-                  <span class="accordion-header-title">{{ group.category.name }}</span>
-                  <span
-                    @click="handleCategoryClick(group.category.id)"
-                    class="accordion-toggle material-icons"
-                    >{{ group.category.id == selectedCategory ? "remove" : "add" }}</span
-                  >
-                </div>
-                <div v-if="group.category.id == selectedCategory"
-                  class="accordion-content"
-                  :class="{ 'opened': group.category.id == selectedCategory }"
-                >
+                <div class="events-wrapper">
                   <event-block
                     v-for="sess in group.sessions"
                     :key="sess.sessionTimeId"
@@ -67,7 +58,7 @@
                     :enableBooking="false"
                   />
                 </div>
-              </div>
+              </base-accordion>
             </div>
           </div>
           <div class="feeds-divider" v-if="isEmpty(feedNavs)"></div>
@@ -567,7 +558,6 @@ export default {
   .block-content {
     width: 100%;
     padding: 24px;
-    margin-top: 16px;
     padding-top: 32px;
     border-top: 1px solid $secondary-color-20;
     display: flex;
@@ -952,6 +942,20 @@ export default {
     }
   }
 }
+.events-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  overflow: hidden;
+}
+.events-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-inline: 24px;
+}
 @media (min-width: 672px) {
   .text-content {
     padding-inline: 7% !important;
@@ -1040,6 +1044,14 @@ export default {
     .accordion-header {
       padding-inline: 0 !important;
     }
+  }
+  .events-wrapper {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-inline: 0 !important;
+  }
+  .events-block {
+    padding-inline: 0 !important;
   }
 }
 

@@ -113,7 +113,6 @@ export default {
   padding-block: 24px;
 }
 .slide-wrapper {
-	min-height: 250px;
 	max-height: 250px;
 	margin-right: 16px;
 }
@@ -122,5 +121,10 @@ export default {
 	aspect-ratio: 4/3;
   object-fit: cover;
   mix-blend-mode: multiply;
+}
+@media (min-width: 672px) {
+	.slide-wrapper {
+		min-height: 250px;
+	}
 }
 </style>
