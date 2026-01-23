@@ -1,6 +1,6 @@
 <template>
-  <div class="head-secondary">
-    <span>Use agent code <b>TheTravelClub</b> when filling the application form to receive discounts and perks at The Travel Club stores</span>
+  <div class="head-secondary" v-show="violatorText">
+    <span>{{ violatorText }}</span>
   </div>
 </template>
 
@@ -9,6 +9,14 @@ export default {
   data() {
     return {};
   },
+  computed: {
+    violatorText(){
+      let data = this.$store.getters.getHeadquarter;
+      let hq = data?.headquarter;
+      if(!hq) return '';
+      return hq.custom?.violatorText || '';
+    }
+  }
 };
 </script>
 
