@@ -1,5 +1,5 @@
 <template>
-  <layout-variant-two :autoHeight="proceedRegister">
+  <layout-variant-two :autoHeight="proceedRegister" :hideFootNote="true">
     <template v-slot:header>
       <div class="slide-down">
         <base-nav-content overrideNavs="Registration" />
