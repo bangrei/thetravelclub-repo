@@ -267,6 +267,7 @@ export default {
   .register-page-con {
     padding: 0 !important;
     width: 100%;
+    aspect-ratio: 5/2.7;
     margin: auto;
   }
   .img-as-bground {
