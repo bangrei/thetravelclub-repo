@@ -209,7 +209,7 @@ export default {
 		}
 
 		&--opened {
-			max-height: 1000px;
+			max-height: fit-content;
 		}
 	}
 
@@ -223,7 +223,7 @@ export default {
 		margin-left: 40px;
 
 		&--opened {
-			max-height: 1000px;
+			max-height: fit-content;
 		}
 	}
 }
