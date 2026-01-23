@@ -79,10 +79,12 @@
           </div>
         </div>
         <div class="block-content">
-          <h2>Stay connected. Sign up for news, events, and offers direct to your inbox.</h2>
-          <span>Unsubscribe at any time. An unsubscribe link will be included in every email.</span>
-          <input type="email" class="newsletter-input" placeholder="Enter your email address"/>
-          <span>By entering and submitting your email, you agree to subscribe to the The Travel Club Concierge newsletter and acknowledge that you have read and understood the The Travel Club privacy notice and consent  to the processing of your personal data for marketing purposes. </span>
+          <h2>Contact Us</h2>
+          <span>For questions and inquiries, email us at: <b>thetravelclub.ph@primergrp.com</b></span>
+          <div class="social-links">
+            <img :src="instagramApp.src" alt="Instagram" width="35" height="35" @click="openExternalLink(instagramApp.url)">
+            <img :src="fbApp.src" alt="Facebook" width="35" height="35" @click="openExternalLink(fbApp.url)">
+          </div>
         </div>
       </div>
     </template>
@@ -97,6 +99,8 @@ import { isEmpty } from "lodash";
 import moment from "moment-timezone";
 import EventBlock from "./components/EventBlock.vue";
 import ActivitiesCarousel from "./components/ActivitiesCarousel.vue";
+import fbIcon from "@/assets/images/fb-icon.svg";
+import instagramIcon from "@/assets/images/instagram-icon.svg";
 
 export default {
   name: "EventsPage",
@@ -159,6 +163,12 @@ export default {
     },
   },
   computed: {
+    fbApp(){
+      return {src: fbIcon, url: "https://www.facebook.com/thetravelclubph/"};
+    },
+    instagramApp(){
+      return {src: instagramIcon, url: "https://www.instagram.com/thetravelclubph/?hl=en"}
+    },
     showFeeds() {
       return this.activeFooterNavId == 1;
     },
@@ -487,6 +497,16 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.social-links {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-inline: auto;
+  width: fit-content;
+  img {
+    cursor: pointer;
+  }
+}
 .video-banner {
   width: 100%;
   padding-bottom: 32px;
