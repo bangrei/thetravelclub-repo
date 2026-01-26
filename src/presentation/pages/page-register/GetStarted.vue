@@ -1,34 +1,8 @@
 <template>
   <start-page-layout id="get-started">
     <template v-slot:body>
-      <div class="pg-container" :class="{ 'get-start': getStarted }">
-        <div class="body-wrapper" v-if="getStarted">
-          <div class="body-con">
-            <p class="title-text heading-4">
-              <span>Welcome to {{ appName }}!</span>
-            </p>
-            <!-- <p class="header-text heading-4">
-							<span>Let us get to know you first!</span>
-						</p> -->
-            <p
-              class="sub-title-text"
-              v-for="(msg, index) in messages"
-              v-bind:key="index"
-              v-html="msg"
-            ></p>
-          </div>
-        </div>
-        <div class="welcome-button-con" v-if="getStarted">
-          <base-button
-            btnLabel="Get Started"
-            iconName="arrow_forward"
-            :isRightIcon="true"
-            class="sd-btn-primary sd-btn-md body-1-normal medium"
-            @click="start"
-          />
-        </div>
-
-        <div class="body-wrapper" v-if="!getStarted">
+      <div class="pg-container">
+        <div class="body-wrapper">
           <div class="body-con">
             <base-icon
               class="sd-icon-btn-ghost sd-icon-btn-xl unset-cursor align-middle"
@@ -40,7 +14,7 @@
               <span>Congrats!</span>
             </p>
             <p class="title-text heading-4">
-              <span>And welcome to {{ appName }}</span>
+              <span>Welcome to {{ appName }}</span>
             </p>
             <p class="sub-title-text body-1-normal regular secondary-color-60">
               Let’s onboard together!
@@ -48,7 +22,7 @@
           </div>
           <div class="welcome-button-con">
             <base-button
-              btnLabel="Start!"
+              btnLabel="Get Started!"
               :isRightIcon="true"
               class="sd-btn-primary sd-btn-md body-1-normal medium"
               @click="start"
@@ -83,10 +57,6 @@ export default {
   },
   methods: {
     start() {
-      if (!this.getStarted) {
-        this.getStarted = true;
-        return;
-      }
       if (this.$route.query.externalLink) {
 				// return window.location.href = this.$route.query.externalLink;
         let externalLink = this.$route.query.externalLink

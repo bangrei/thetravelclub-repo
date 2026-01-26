@@ -4,7 +4,10 @@
 			<p class="page__content__title heading-4">
 				{{ welcomeMessage }}
 			</p>
-			<p class="page__content__subtitle" v-if="!useLogin">
+			<p class="page__content__subtitle" v-if="useLogin">
+				Log-in or create an account to proceed with registration
+			</p>
+			<p class="page__content__subtitle" v-else>
 				OTP verification code will be sent to your registered email
 			</p>
 			<p class="page__content__label body-1-normal medium">Email address</p>
