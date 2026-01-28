@@ -8,7 +8,12 @@
     </template>
     <template v-slot:body>
       <div class="events-content">
-        <div class="container-2" :class="{ 'show-background': !loading }"></div>
+        <div class="container-2">
+          <div class="homepage-banners-stack">
+            <img :src="require('@/assets/images/TTC-homebanner2_1920x522.png')" width="1024" height="150" alt=""/>
+            <img :src="require('@/assets/images/TTC-homebanner_1920x555.png')" width="1024" height="296" alt=""/>
+          </div>
+        </div>
         <div class="text-content">
           <br />
           <h1>The Travel Club goes to Japan with EtonHouse International School</h1>
@@ -682,10 +687,6 @@ export default {
         }
       }
     }
-
-    & + .container-2 {
-      margin-top: 24px;
-    }
   }
 
   .container-2 {
@@ -693,10 +694,21 @@ export default {
     text-align: left;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
     background: $secondary-color-90;
     color: $white;
     position: relative;
+    min-height: 190px;
+    overflow: hidden;
+    .homepage-banners-stack {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+    }
 
     &.show-background {
       min-width: 100%;
@@ -1015,9 +1027,9 @@ export default {
   }
 
   .container-2 {
-    padding: 32px 0 !important;
-    padding-bottom: 0 !important;
-
+    .homepage-banners-stack {
+      min-height: 370px;
+    }
     .top-content {
       padding: 32px 7% !important;
     }
