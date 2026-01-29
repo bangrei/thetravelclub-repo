@@ -16,28 +16,30 @@
         </div>
         <div class="text-content">
           <br />
-          <h1>The Travel Club goes to Japan with EtonHouse International School</h1>
+          <h1>Give your child a summer beyond travel</h1>
 
           <p>The Travel Club is expanding beyond your one-stop shop for travel essentials to all things travel and experience!</p>
-          <p>This 2026, The Travel Club is partnering with EtonHouse International School to invite kids to an educational, 
-            fun, and memorable 5-day summer camp getaway in Japan. Beyond just your reliable travel store, 
-            let us also give you experiences to make your travel even more meaningful with The Travel Club.</p>
+          <p>This 2026, The Travel Club is partnering with EtonHouse International School to invite kids 
+            to an educational, fun, and memorable 5-day summer camp getaway in Japan. 
+            Let us make travel more meaningful for the family with The Travel Club.</p>
           <br />
           <div class="inline-content">
             <div class="inline-content-item">
               <h2>About EtonHouse</h2>
               <p>
-                EtonHouse is an international school from Singapore founded on the British learning system in 1995 in pursuit of high-quality, 
-                research-based, and inquiry-driven education. 
+                EtonHouse is an international school from Singapore founded on the British learning system in 1995 
+                in pursuit of high-quality, research-based, and inquiry-driven education.  
               </p>
               <p>
-                Today, they are present in over 100 schools across 12 countries, continuing to expand to meet the growing demand 
+                Today, they are present in over 120 schools across 12 countries, continuing to expand to meet the growing demand 
                 for quality education.
               </p>
               <p>
-                As part of the global education group, true to its name, EtonHouse International School Japan has opened its campus 
-                internationally for children across the globe to fly in and join their English-language Summer Camp designed to be 
-                enjoyable for all children regardless English language proficiency.
+                Since 2015, EtonHouse International School Japan has been welcoming over 800 children across the globe yearly 
+                to fly in and join their English-language Summer Camp designed for all children to enjoy 
+                regardless of English proficiency.  Led by AED-certified, qualified educators, 
+                the camps prioritize children’s safety and learning to encourage social development and independence, 
+                all in the spirit of summer fun!
               </p>
             </div>
             <div class="inline-content-image">
