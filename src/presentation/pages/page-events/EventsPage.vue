@@ -699,7 +699,6 @@ export default {
     background: $secondary-color-90;
     color: $white;
     position: relative;
-    min-height: 190px;
     overflow: hidden;
     .homepage-banners-stack {
       width: 100%;
@@ -1029,9 +1028,6 @@ export default {
   }
 
   .container-2 {
-    .homepage-banners-stack {
-      min-height: 370px;
-    }
     .top-content {
       padding: 32px 7% !important;
     }
