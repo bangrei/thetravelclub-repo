@@ -182,10 +182,10 @@
                   v-for="(extra, n) in groupedBookingExtracharges"
                   :key="n"
                 >
-                  <div class="extracharge-head">{{ extra.parentName }}</div>
+                  <div class="extracharge-head" v-html="extra.parentName"></div>
                   <div class="extracharge-body">
                     <div class="extracharge-title">
-                      {{ extra.qty }}x {{ extra.value }}
+                      <span>{{ extra.qty }}x</span> <span v-html="extra.value"></span>
                     </div>
                     <div class="extracharge-amount">
                       {{ currency(extra.cost) }}

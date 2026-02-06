@@ -88,7 +88,7 @@
                                         v-for="(ai, ix) in p.additionalInfo"
                                         :key="ai.id">
                                         <div class="participant__label">
-                                            <span>{{ ai.name }}</span>
+                                            <span v-html="ai.name"></span>
                                             <span v-if="ai.type == 'MANDATORY'" class="required">*</span>
                                         </div>
                                         <div class="participant__input">
@@ -99,7 +99,7 @@
                                                         @click="radioAdditionalInfo(ix,n)"
                                                     >
                                                     <div class="radio-label" :class="{'inline': info.cost > 0}">
-                                                        <span>{{ info.value }}</span>
+                                                        <span v-html="info.value"></span>
                                                         <span class="checkbox-cost" 
                                                             :class="{'active': info.checked}"
                                                             v-if="info.cost > 0"
@@ -115,7 +115,7 @@
                                                         @click="checkListAdditionalInfo(ix,n)"
                                                     >
                                                     <div class="checkbox-label" :class="{'inline': info.cost > 0}">
-                                                        <span>{{ info.value }}</span>
+                                                        <span v-html="info.value"></span>
                                                         <span class="checkbox-cost" 
                                                             :class="{'active': info.checked}"
                                                             v-if="info.cost > 0"

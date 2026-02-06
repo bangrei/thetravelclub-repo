@@ -64,7 +64,7 @@
             <span class="bold">{{ currency(bookingAmount) }}</span>
         </div>
         <div class="inline-row" v-for="(addon, n) in addonsCharges" :key="n">
-            <span>{{ addon.desc }}</span>
+            <span v-html="addon.desc"></span>
             <span class="bold">{{ currency(addon.amount) }}</span>
         </div>
         <div class="inline-row">
