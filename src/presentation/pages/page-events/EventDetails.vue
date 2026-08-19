@@ -648,7 +648,7 @@ export default {
         getImage(image, small){
             if(!image) return "";
             let size = image;
-            if(small) size = "c_fill,h_300,w_350/" + image;
+            if(small) size = `${image}?width=350`;
             return this.$store.getters.cloudinaryURL + size;
         },
         goToBack(){
@@ -1232,6 +1232,10 @@ export default {
                     position: relative;
                     &:not(.static) {
                         cursor: pointer;
+                    }
+                    img {
+                        aspect-ratio: 1/1;
+                        object-fit: contain;
                     }
                     &:hover {
                         opacity: 0.7;

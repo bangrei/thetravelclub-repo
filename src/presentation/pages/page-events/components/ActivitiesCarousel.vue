@@ -8,7 +8,7 @@
     >
 			<slide v-for="(img, index) in contents" :key="index">
 				<div class="slide-wrapper">
-					<img class="carousel-img" alt="image" :src="img"/>
+					<img class="carousel-img" alt="image" v-for="it in imagesArray(img)" :key="it" :src="it"/>
 				</div>
 			</slide>
 			<template #addons v-if="contentLength > 1">
@@ -69,6 +69,13 @@ export default {
 		}
 	},
   methods: {
+		imagesArray(item){
+			if(!item) return [];
+			if(Array.isArray(item)){
+				return item
+			}
+			return [item];
+		},
 		setSwiperRef(swiper) {
 			this.swiperRef = swiper;
 		},
@@ -113,8 +120,11 @@ export default {
   padding-block: 24px;
 }
 .slide-wrapper {
-	max-height: 250px;
-	margin-right: 16px;
+	max-height: auto;
+	margin-right: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
 }
 .carousel-img {
 	height: 100%;
@@ -124,7 +134,7 @@ export default {
 }
 @media (min-width: 672px) {
 	.slide-wrapper {
-		min-height: 250px;
+		min-height: auto;
 	}
 }
 </style>

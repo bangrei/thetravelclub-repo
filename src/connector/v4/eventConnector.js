@@ -51,14 +51,15 @@ export const submitEventReview = async (payload, eventId) => {
     const isHQ = store.getters.isHQ;
     let code = EUNOIA_CONFIG.brandCode;
     if (isHQ) code = "hq$" + code;
+    let params = {
+      ...payload,
+      app: EUNOIA_CONFIG.app,
+      authToken: store.getters.getEunoiaToken
+    }
     const { post } = EUNOIA_APIV4_CONNECTOR({
       target: `/eventReviews/createReview/${code}/${eventId}`,
       requestMethod: "POST",
-      payload: {
-        ...payload,
-        authToken: store.getters.getEunoiaToken,
-        app: EUNOIA_CONFIG.app,
-      }
+      body: JSON.stringify(params)
     });
     const data = await post();
     return Promise.resolve(data);

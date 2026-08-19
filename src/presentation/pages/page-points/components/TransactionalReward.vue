@@ -378,7 +378,7 @@ export default {
             .tz(it.expiryDate, "Asia/Singapore")
             .format("DD MMM YYYY");
           it.displayId = it.imageId
-            ? this.getImage(it.imageId, "c_fill")
+            ? this.getImage(it.imageId)
             : require("@/assets/images/hydro-logo-white.png");
         });
         return items.filter((it) => {

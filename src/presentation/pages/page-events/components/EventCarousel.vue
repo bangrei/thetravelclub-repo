@@ -16,9 +16,9 @@
 				<template #next><span class="carousel__icon material-icons-outlined md-32">chevron_right</span></template>
 				<template #prev><span class="carousel__icon material-icons-outlined md-32">chevron_left</span></template>
 			</navigation>
-            <div class="pagination__custom">
-                <pagination />
-            </div>
+			<div class="pagination__custom">
+				<pagination />
+			</div>
 		</template>
 	</carousel>
 </template>
@@ -150,12 +150,12 @@ export default {
 			justify-content: center;
 			gap: 8px;
 			margin: 0px auto;
-            z-index: 2;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            padding: 10px 0;
+			z-index: 2;
+			position: absolute;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			padding: 10px 0;
 		}
 		&__main {
 			display: flex;
@@ -201,9 +201,9 @@ export default {
 		width: 100%;
 		object-fit: cover;
 		aspect-ratio: 4/3;
-        &.square {
-            aspect-ratio: 1/1 !important;
-        }
+		&.square {
+			aspect-ratio: 5/3 !important;
+		}
 	}
 
 	.progress-con {

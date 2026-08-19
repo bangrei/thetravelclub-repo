@@ -7,6 +7,13 @@ import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
+    path: "/luggage-services",
+    name: "LuggageServicesPage",
+    component: function () {
+      return import("../presentation/pages/page-luggage/LuggageServicesPage.vue");
+    },
+  },
+  {
     path: "/terms-of-use",
     name: "TermsOfUse",
     component: function () {

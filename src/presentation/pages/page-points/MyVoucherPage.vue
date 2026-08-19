@@ -312,7 +312,7 @@ export default {
             it.promotion.validDateRange = validDateRange.join(" to ");
             let imageId = it.promotion.imageId;
             it.promotion.displayId = imageId
-              ? this.getImage(imageId, "c_fill")
+              ? this.getImage(imageId)
               : require("@/assets/images/hydro-logo-white.png");
             return it;
           });

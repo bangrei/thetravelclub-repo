@@ -665,9 +665,8 @@ export default {
     },
     getImage(image, prop) {
       if (!image) return "";
-      if (!prop) prop = "c_fill,h_300,w_350";
-      //return this.$store.getters.cloudinaryURL + prop + "/" + image;
-      return this.$store.getters.cloudinaryURL + image;
+      if (!prop) prop = "?width=350";
+      return this.$store.getters.cloudinaryURL + image + prop;
     },
     resizeImageHandler() {
       let length = document.getElementsByClassName("img-ratio").length;

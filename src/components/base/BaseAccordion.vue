@@ -16,7 +16,11 @@ export default {
 		initOpen: {
 			type: Boolean,
 			default: false
-		}
+		},
+		largeTitle: {
+			type: Boolean,
+			default: false
+		},
 	},
 	data() {
 		return {
@@ -59,7 +63,7 @@ export default {
 			return {
 				header: "accordion__header",
 				icon: "accordion__header__icon material-icons",
-				title: "accordion__header__title body-1-normal medium",
+				title: `accordion__header__title body-1-normal ${this.largeTitle ? "large" : "medium"}`,
 				toggle: "accordion__header__toggle",
 			};
 		},
@@ -164,6 +168,7 @@ export default {
 
 .accordion {
 	min-height: 56px;
+	width: 100%;
 
 	&__header {
 		display: flex;
@@ -180,6 +185,9 @@ export default {
 			color: $secondary-color-90;
 			flex-grow: 1;
 			text-align: left;
+			&:is(.large){
+				font-size: x-large;
+			}
 		}
 
 		&__title--icon {

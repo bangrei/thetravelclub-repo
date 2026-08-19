@@ -39,9 +39,6 @@ body {
   position: relative;
   background: $gold-dark;
   border-bottom: none !important;
-  &.default {
-    /* border-bottom: 1px solid rgba($color: $secondary-color-20, $alpha: 1) !important; */
-  }
 
   .header-logo-con {
     min-height: 100%;
@@ -136,9 +133,16 @@ body {
       align-items: center;
     }
   }
+  &:is(.fit-content){
+    width: fit-content;
+    max-width: fit-content;
+  }
+  &:is(.flex-end){
+    justify-content: flex-end;
+  }
 }
 .header-auth {
-  width: 100%;
+  width: fit-content;
   float: right;
   padding: 8px 16px;
   display: flex;
@@ -160,7 +164,7 @@ body {
     cursor: pointer;
     font-weight: bold;
     font-size: 0.8em;
-    border-radius: 8px;
+    border-radius: 999px;
     background: $white;
     color: $secondary-color-90;
     padding: 4px 16px;
@@ -1147,6 +1151,13 @@ body {
     }
   }
 }
+.brands-carousel-container {
+  position: relative;
+  .carousel__icon {
+    background-color: $secondary-color-100;
+    color: $white;
+  }
+}
 @media (max-width: 672px) {
   .carousel {
     &__next {
@@ -1749,6 +1760,12 @@ body {
   }
 }
 @media (min-width: 672px) {
+  .brands-carousel-container {
+    .carousel__viewport {
+      max-width: calc(100% - 150px);
+      margin-inline: auto;
+    }
+  }
   .reward-section {
     flex-direction: row !important;
     .reward-side {
@@ -1764,6 +1781,13 @@ body {
         justify-content: center;
         align-items: center;
       }
+    }
+  }
+}
+@media (min-width: 672px) and (max-width: 1024px) {
+  .brands-carousel-container {
+    .carousel__viewport {
+      max-width: 100% !important;
     }
   }
 }

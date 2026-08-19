@@ -1,88 +1,71 @@
 <template>
   <layout-variant-two :show-loading-screen="loading">
     <template v-slot:header>
-      <div class="slide-down">
-        <base-nav-content />
-        <base-nav-secondary />
-      </div>
+      <base-nav-secondary />
+      <base-nav-content />
     </template>
     <template v-slot:body>
       <div class="events-content">
         <div class="container-2">
           <div class="homepage-banners-stack">
-            <img :src="require('@/assets/images/TTC-homebanner2_1920x522.png')" width="1024" height="150" alt=""/>
-            <img :src="require('@/assets/images/TTC-homebanner_1920x555.png')" width="1024" height="296" alt=""/>
+            <picture>
+              <source :srcset="require('@/assets/images/ttc-homebanner-mobile-1.png')" media="(max-width: 671px)">
+              <source :srcset="require('@/assets/images/TTC-homebanner2_1920x522.png')" media="(min-width: 672px)">
+              <img :src="require('@/assets/images/TTC-homebanner2_1920x522.png')" alt="" style="width:100%; height:auto;">
+            </picture>
+            <picture>
+              <source :srcset="require('@/assets/images/ttc-homebanner-mobile-2.png')" media="(max-width: 671px)">
+              <source :srcset="require('@/assets/images/TTC-homebanner_1920x555.png')" media="(min-width: 672px)">
+              <img :src="require('@/assets/images/TTC-homebanner_1920x555.png')" alt="" style="width:100%; height:auto;">
+            </picture>
           </div>
         </div>
-        <div class="text-content">
-          <br />
-          <h1>Give your child a summer beyond travel</h1>
-
-          <p>The Travel Club is expanding beyond your one-stop shop for travel essentials to all things travel and experience!</p>
-          <p>This 2026, The Travel Club is partnering with EtonHouse International School to invite kids 
-            to an educational, fun, and memorable 5-day summer camp getaway in Japan. 
-            Let us make travel more meaningful for the family with The Travel Club.</p>
-          <br />
-          <div class="inline-content">
+        <div class="white-smokey">
+          <PartnersList/>
+          <UpcomingEvents/>
+          <div class="inline-content-wrapper">
+            <h2>Discover exciting destinations</h2>
+            <div class="inline-content stretch">
+              <div class="inline-content-item">
+                <p>
+                  Parents and guardians have no shortage of enriching experiences and activities to enjoy in Karuizawa while the children are at summer camp. From culture and nature to shopping and gastronomy, the area offers a remarkable selection of world-class attractions: 
+                </p><br/>
+                <ul>
+                  <li>Karuizawa Prince Shopping Plaza outlet mall with 250 stores</li>
+                  <li>Hiroki Senju Museum</li>
+                  <li>Shiraito Waterfall</li>
+                  <li>“Swan Lake” Kumobaike Pond</li>
+                  <li>Komoro Distillery tour</li>
+                  <li>Anne Winery wine tasting</li>
+                  <li>Kusatsu Onsen hot springs</li>
+                </ul>
+                <br/>
+                <p>
+                  Whether for leisure, discovery, or a quiet moment in nature, Karuizawa offers experiences that leave a lasting impression.
+                </p><br/>
+                <p>For more information, visit this link: Karuizawa Guide</p>
+              </div>
+              <div class="inline-content-image">
+                <activities-carousel :images="banners"/>
+              </div>
+            </div>
+          </div>
+          <WhyContent/>
+        </div>
+        <div class="inline-content-wrapper bg-darker">
+          <h2>Bulk Order</h2>
+          <div class="inline-content stretch">
             <div class="inline-content-item">
-              <h2>About EtonHouse</h2>
+              <b>
+                Looking for The Travel Club products for your next giveaway?  
+              </b><br/>
+              <router-link to="/bulk-orders">Inquire Now</router-link>
               <p>
-                EtonHouse is an international school from Singapore founded on the British learning system in 1995 
-                in pursuit of high-quality, research-based, and inquiry-driven education.  
-              </p>
-              <p>
-                Today, they are present in over 120 schools across 12 countries, continuing to expand to meet the growing demand 
-                for quality education.
-              </p>
-              <p>
-                Since 2015, EtonHouse International School Japan has been welcoming over 800 children across the globe yearly 
-                to fly in and join their English-language Summer Camp designed for all children to enjoy 
-                regardless of English proficiency.  Led by AED-certified, qualified educators, 
-                the camps prioritize children’s safety and learning to encourage social development and independence, 
-                all in the spirit of summer fun!
-              </p>
+                Get exclusive discounts and personalize products when you order in bulk. Our flexible minimum order quantity is perfect for small or large scale events, corporate gifting, and more.</p>
             </div>
             <div class="inline-content-image">
-              <img :src="require('@/assets/images/homepage-banner-2.jpg')" alt="EtonHouse"/>
+              <activities-carousel :images="orderBanners"/>
             </div>
-          </div>
-        </div>
-        <div class="main-content" :class="{ empty: isEmpty(filteredEvents) }">
-          <div class="feeds-content">
-            <div class="events-block">
-              <base-accordion
-                v-for="group in mappedCategories"
-                :key="group.category.id"
-                :accordion-title="group.category.name"
-                :initOpen="true"
-              >
-                <div class="events-wrapper">
-                  <event-block
-                    v-for="sess in group.sessions"
-                    :key="sess.sessionTimeId"
-                    :event="sess"
-                    :selectedCategory="selectedCategory"
-                    :enableBooking="false"
-                  />
-                </div>
-              </base-accordion>
-            </div>
-          </div>
-          <div class="feeds-divider" v-if="isEmpty(feedNavs)"></div>
-        </div>
-        <div class="inline-content stretch">
-          <div class="inline-content-item">
-            <h2>Camp Activities</h2><br/>
-            <p>
-              EtonHouse has curated a program of indoor and outdoor activities that guarantees and prioritizes 
-              the developmental needs, learning, and enjoyment of each child for every age group. 
-            </p><br/>
-            <p>
-              Activities are subject to change depending on available resources, weather condition, group dynamics and child safety.
-            </p>
-          </div>
-          <div class="inline-content-image">
-            <activities-carousel :images="banners"/>
           </div>
         </div>
         <div class="block-content">
@@ -99,27 +82,31 @@
 </template>
 
 <script>
-import { eventService, homeService } from "@/bloc/services";
+import { homeService } from "@/bloc/services";
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
 import utility from "@/presentation/mixins/utility.js";
 import { isEmpty } from "lodash";
-import moment from "moment-timezone";
-import EventBlock from "./components/EventBlock.vue";
 import ActivitiesCarousel from "./components/ActivitiesCarousel.vue";
 import fbIcon from "@/assets/images/fb-icon.svg";
 import instagramIcon from "@/assets/images/instagram-icon.svg";
+import PartnersList from "./components/PartnersList.vue";
+import UpcomingEvents from "./components/UpcomingEvents.vue";
+import WhyContent from "./components/WhyContent.vue";
 
 export default {
   name: "EventsPage",
   mixins: [utility],
   components: {
     LayoutVariantTwo,
-    EventBlock,
-    ActivitiesCarousel
+    ActivitiesCarousel,
+    PartnersList,
+    UpcomingEvents,
+    WhyContent,
   },
   data() {
     return {
       banners: [],
+      orderBanners: [],
       customer: {},
       loading: false,
       eventNavs: [],
@@ -206,20 +193,41 @@ export default {
   methods: {
     setBanners(){
       this.banners = [
+				[
+          require('@/assets/images/camp-activities-1.jpg'),
+          require('@/assets/images/camp-activities-2.jpg'),
+          require('@/assets/images/camp-activities-3.jpg'),
+        ],
+				[
+          require('@/assets/images/camp-activities-4.jpg'),
+          require('@/assets/images/camp-activities-5.jpg'),
+				  require('@/assets/images/camp-activities-6.jpg'),
+        ],
+        [
+          require('@/assets/images/camp-activities-7.jpg'),
+          require('@/assets/images/camp-activities-8.jpg'),
+          require('@/assets/images/camp-activities-9.jpg'),
+        ],
+        [
+          require('@/assets/images/camp-activities-10.jpg'),
+          require('@/assets/images/camp-activities-11.jpg'),
+          require('@/assets/images/camp-activities-12.jpg'),
+        ],
+				// require('@/assets/images/camp-activities-13.jpg')
+			];
+      this.orderBanners = [
 				require('@/assets/images/camp-activities-1.jpg'),
-				require('@/assets/images/camp-activities-2.jpg'),
-				require('@/assets/images/camp-activities-3.jpg'),
-				require('@/assets/images/camp-activities-4.jpg'),
-
-				require('@/assets/images/camp-activities-5.jpg'),
-				require('@/assets/images/camp-activities-6.jpg'),
-				require('@/assets/images/camp-activities-7.jpg'),
-				require('@/assets/images/camp-activities-8.jpg'),
-
-				require('@/assets/images/camp-activities-9.jpg'),
-				require('@/assets/images/camp-activities-10.jpg'),
-				require('@/assets/images/camp-activities-11.jpg'),
-				require('@/assets/images/camp-activities-12.jpg'),
+        require('@/assets/images/camp-activities-2.jpg'),
+        require('@/assets/images/camp-activities-3.jpg'),
+        require('@/assets/images/camp-activities-4.jpg'),
+        require('@/assets/images/camp-activities-5.jpg'),
+        require('@/assets/images/camp-activities-6.jpg'),
+        require('@/assets/images/camp-activities-7.jpg'),
+        require('@/assets/images/camp-activities-8.jpg'),
+        require('@/assets/images/camp-activities-9.jpg'),
+        require('@/assets/images/camp-activities-10.jpg'),
+        require('@/assets/images/camp-activities-11.jpg'),
+        require('@/assets/images/camp-activities-12.jpg'),
 				require('@/assets/images/camp-activities-13.jpg')
 			]
     },
@@ -347,136 +355,8 @@ export default {
         this.showNotification("alert", "error_outline", error);
       }
     },
-    eventsGroupedBycategories(id){
-      if (isEmpty(this.categories)) return [];
-      if (!this.selectedCategory) return [];
-      let events = this.events.filter((ev) => ev.eventCategories.map((c) => c.id).includes(id));
-      if (isEmpty(events)) return [];
-      let sessions = [];
-      for(let n = 0; n < events.length; n++){
-        let ev = events[n];
-
-        let sess = ev.sessions?.map((s) => ({ 
-          ...s, 
-          year: moment.tz(s.startDate, "Asia/Singapore").format("yyyy"),
-          month: moment.tz(s.startDate, "Asia/Singapore").format("MMMM"),
-          parent: ev 
-        }));
-        sessions = [...sessions, ...sess];
-      }
-      return sessions;
-    },
-    async initEvents() {
-      let stateEvent = this.$store.getters.getStateEventsPage;
-      let currentTab = stateEvent.currentTab;
-
-      this.scrollTop = stateEvent.scrollTop || 0;
-      this.customer = this.$store.getters.getCustomer;
-      this.years = [];
-      this.events = [];
-      this.categories = [];
-      let json = await eventService.getEvents();
-      this.loading = false;
-      const hiddenEvents = this.$store.getters.getHiddenEvents || [];
-      if (!isEmpty(json) && !isEmpty(json.events)) {
-        let momente = moment();
-        let today = moment.tz(momente, "Asia/Singapore").format("x");
-        let events = json.events.filter((it) => {
-          return (
-            it.status == "ACTIVE" &&
-            it.endDate > today &&
-            !hiddenEvents.includes(it.id)
-          );
-        });
-        if (!isEmpty(events)) {
-          events.map((it) => {
-            it.year = moment.tz(it.startDate, "Asia/Singapore").format("yyyy");
-            it.month = moment.tz(it.startDate, "Asia/Singapore").format("MMMM");
-            it.isActive = false;
-            return it;
-          });
-          events.sort((a, b) => {
-            return a.sortIndex - b.sortIndex && a.startDate - b.startDate;
-          });
-          events[0].isActive = true;
-          this.events = events;
-          this.activeEvent = events[0];
-
-          events.forEach((ev) => {
-            if (!this.years.includes(ev.year)) this.years.push(ev.year);
-            let cats = ev.eventCategories.filter((ec) => !this.categories.map((c) => c.name).includes(ec.name));
-            this.categories = [...this.categories, ...cats];
-          });
-          if(!isEmpty(this.categories)){
-            this.categories.sort((a,b) => {
-              if(a.sortIndex == b.sortIndex) return a.name.localeCompare(b.name);
-              return a.sortIndex - b.sortIndex;
-            });
-            this.selectedCategory = this.categories[0].id;
-            let cats = JSON.parse(JSON.stringify(this.categories));
-            let datamapped = cats.map((cat) => {
-              return {
-                category: cat,
-                sessions: this.eventsGroupedBycategories(cat.id)
-              }
-            });
-            this.mappedCategories = datamapped.filter((it) => it.sessions.length > 0);
-            let skip = false;
-            if (!isEmpty(currentTab)) {
-              let curr = this.categories.find((c) => c == currentTab);
-              if (curr) {
-                skip = true;
-                this.selectedCategory = curr;
-              }
-            }
-            if (!skip) this.handleCategoryClick(this.selectedCategory);
-          }
-        }
-        this.setFilteredEvents();
-        this.$store.dispatch("setEvents", events);
-        document.querySelector(".sd-base-con").scrollTop = this.scrollTop;
-
-        let self = this;
-        document
-          .querySelector(".sd-base-con")
-          .addEventListener("scroll", (e) => {
-            self.scrollTop = e.target.scrollTop;
-            let payload = {
-              currentTab: self.selectedYear,
-              scrollTop: self.scrollTop,
-            };
-            self.$store.dispatch("setStateEventsPage", payload);
-          });
-      }
-      setTimeout(() => {
-        this.resizeImageHandler();
-      }, 20);
-    },
     resizeBannerHandler() {
       this.isDesktop = window.innerWidth >= 672;
-      if (this.isDestroyed) return;
-
-      if (this.isDesktop) {
-        let scrollable =
-          document.querySelector(".feeds-content").scrollWidth >
-          document.querySelector(".feeds-content").clientWidth;
-        if (!scrollable)
-          document.querySelector(".feeds-content").classList.add("centered");
-        else
-          document.querySelector(".feeds-content").classList.remove("centered");
-      } else {
-        document.querySelector(".feeds-content").classList.remove("centered");
-      }
-    },
-    handleCategoryClick(id) {
-      if (id == this.selectedCategory) return;
-      this.selectedCategory = id;
-      let payload = {
-        currentTab: id,
-        scrollTop: this.scrollTop,
-      };
-      this.$store.dispatch("setStateEventsPage", payload);
-      this.setFilteredEvents();
     },
   },
   async created() {
@@ -486,15 +366,14 @@ export default {
       this.loading = true;
       this.setBanners();
       await this.refreshMainData(true);
-      this.initEvents();
+    } catch (error) {
+      this.showNotification("alert", "error_outline", error);
+    } finally {
+      this.loading = false;
       this.resizeBannerHandler();
-
       window.addEventListener("resize", () => {
         this.resizeBannerHandler();
       });
-    } catch (error) {
-      this.loading = false;
-      this.showNotification("alert", "error_outline", error);
     }
   },
   beforeUnmount() {
@@ -504,6 +383,15 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.white-smokey {
+  background: $white-smokey;
+  padding-block: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
 .social-links {
   display: flex;
   align-items: center;
@@ -584,13 +472,14 @@ export default {
 
   .block-content {
     width: 100%;
-    padding: 24px;
-    padding-top: 32px;
+    padding-inline: 24px;
+    padding-block: 48px;
     border-top: 1px solid $secondary-color-20;
     display: flex;
     flex-direction: column;
     gap: 10px;
     line-height: 22px;
+    background: $white-smokey;
   }
   .newsletter-input {
     width: 100%;
@@ -601,15 +490,45 @@ export default {
     border: 1px solid $gold-dark;
     padding-inline: 24px;
   }
-
+  .inline-content-wrapper {
+    padding: 32px 24px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 24px;
+    &:is(.bg-darker){
+      background: $yellow-darker;
+    }
+  }
   .inline-content {
     width: 100%;
     display: flex;
     gap: 24px;
     flex-direction: column;
-    padding: 24px;
     line-height: 1.5;
     text-align: left;
+    button, a {
+      border-radius: 999px;
+      padding: 8px 32px;
+      border: none;
+      background: $yellow-main;
+      color: $secondary-color-90;
+      cursor: pointer;
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-block: 16px;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: none;
+      outline: none;
+      &:hover {
+        opacity: 0.7;
+      }
+    }
     &.stretch {
       .inline-content-item {
         max-width: 100% !important;
@@ -992,7 +911,7 @@ export default {
 @media (min-width: 672px) {
   .text-content {
     padding-inline: 7% !important;
-    .inline-content {
+    .inline-content-wrapper {
       padding-inline: 0 !important;
     }
   }
@@ -1002,21 +921,23 @@ export default {
   .block-content {
     padding-inline: 7% !important;
   }
+  .inline-content-wrapper {
+    padding-inline: 7% !important;
+  }
   .inline-content {
     flex-direction: row !important;
-    padding-inline: 7% !important;
     &.stretch {
       .inline-content-item {
-        max-width: 40% !important;
+        max-width: 50% !important;
       }
       .inline-content-image {
-        flex: 2 !important;
+        flex: 1 !important;
         max-width: 100%;
       }
     }
   }
   .inline-content-image {
-    max-width: 40%;
+    max-width: 50%;
   }
   .user-dropdown {
     right: 7% !important;
@@ -1101,7 +1022,7 @@ export default {
     }
   }
 }
-@media (max-width: 800px) {
+@media (min-width: 672px) and (max-width: 1024px) {
   .inline-content {
     flex-direction: column !important;
   }
