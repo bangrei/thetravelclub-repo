@@ -23,32 +23,7 @@
           </base-accordion>
           <br/>
           <base-accordion accordion-title="Store Drop-off" initOpen largeTitle>
-            <div class="luggage-table-container">
-              <!-- <div class="luggage-table-title">Store Drop-off</div> -->
-              <div class="luggage-table-wrapper">
-                <table class="luggage-table">
-                  <thead>
-                    <tr>
-                      <th class="wide-column">Drop-off Stores</th>
-                      <th class="wide-column">Address</th>
-                      <th>Contact</th>
-                      <th>Social Media</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="(row, i) in tableContent" :key="i">
-                      <td>{{ row.store }}</td>
-                      <td>{{ row.address }}</td>
-                      <td class="unwrap-column">{{ row.contact }}</td>
-                      <td>
-                        <a v-if="row.socialMedia" :href="row.socialMedia" target="_blank">{{ row.socialMedia }}</a>
-                        <span v-else>-</span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            <StoresTable :table-header="tableHeader" :table-content="tableContent"/>
           </base-accordion>
           <LuggageForm/>
         </div>
@@ -59,11 +34,13 @@
 <script>
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
 import LuggageForm from "./components/LuggageForm.vue";
+import StoresTable from "./components/StoresTable.vue";
 export default {
   name: "LuggageServicesPage",
   components: {
     LayoutVariantTwo,
     LuggageForm,
+    StoresTable,
   },
   data(){
     return {
@@ -88,6 +65,12 @@ export default {
           title: "Customer Turnover",
           content: "Once service is complete, pick up your item in your chosen drop-off store."
         },
+      ],
+      tableHeader: [
+        {key: "store", name: "Drop-off Stores", wide: true, isLink: false, unwrap: false},
+        {key: "address", name: "Address", wide: true, isLink: false, unwrap: false},
+        {key: "contact", name: "Contact", wide: false, isLink: false, unwrap: true},
+        {key: "socialMedia", name: "Social Media", wide: false, isLink: false, unwrap: false},
       ],
       tableContent: [
         {
@@ -190,49 +173,6 @@ export default {
     .sales-title {
       font-weight: bold;
       text-transform: uppercase;
-    }
-  }
-}
-.luggage-table-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: flex-start;
-  justify-content: flex-start;
-  .luggage-table-wrapper {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: auto;
-  }
-  .luggage-table-title {
-    font-size: x-large;
-    font-weight: bold;
-    margin-bottom: 32px;
-  }
-  .luggage-table {
-    width: 100%;
-    border-collapse: collapse;
-    thead {
-      border-bottom: 2px solid $gold-dark;
-      white-space: nowrap;
-    }
-    th,td {
-      padding-block: 12px;
-      padding-inline: 12px;
-      text-align: left;
-      &:is(.wide-column){
-        min-width: 300px;
-      }
-      &:is(.unwrap-column) {
-        white-space: nowrap;
-      }
-      &:first-child {
-        padding-left: 0 !important;
-      }
-    }
-    td {
-      padding-inline: 12px;
     }
   }
 }

@@ -36,7 +36,7 @@ export default {
 
 @media (min-width: 672px) {
   .head-secondary {
-    padding-inline: 7% !important;
+    padding-inline: 32px !important;
   }
 }
 </style>

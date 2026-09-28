@@ -178,8 +178,8 @@ body {
 }
 @media (min-width: 672px) {
   .header-con {
-    padding: 24px 7% !important;
-    padding-left: calc(7% - 32px) !important;
+    padding: 24px 32px !important;
+    padding-left: 0px !important;
     max-height: 90px !important;
     .header-logo-con {
       max-width: 250px !important;
@@ -193,7 +193,7 @@ body {
     flex-direction: row !important;
     align-items: center;
     justify-content: space-between;
-    padding: 24px 7% !important;
+    padding: 24px 0 !important;
   }
   /*
   .modal-header {
@@ -1151,13 +1151,6 @@ body {
     }
   }
 }
-.brands-carousel-container {
-  position: relative;
-  .carousel__icon {
-    background-color: $secondary-color-100;
-    color: $white;
-  }
-}
 @media (max-width: 672px) {
   .carousel {
     &__next {
@@ -1749,6 +1742,26 @@ body {
   animation: blinkText 1s ease-in-out infinite;
   -webkit-animation: blinkText 1s ease-in-out infinite;
 }
+.product-carousel-container {
+  padding-block: 24px;
+  .carousel__viewport {
+    max-width: calc(100% - 48px);
+    margin-inline: auto;
+  }
+  .carousel__prev,
+  .carousel__next {
+    .carousel__icon {
+      background: $secondary-color-90 !important;
+      color: $white !important;
+    }
+  }
+  .carousel__prev {
+    left: 0 !important;
+  }
+  .carousel__next {
+    right: 0 !important;
+  }
+}
 @media (max-width: 820px) and (min-width: 431px) {
   .reward-side {
     .rewards-info {
@@ -1761,9 +1774,29 @@ body {
 }
 @media (min-width: 672px) {
   .brands-carousel-container {
+    max-width: calc(100% - 150px);
+    margin-inline: auto;
+    position: relative;
+    .carousel__icon {
+      background-color: $secondary-color-100;
+      color: $white;
+    }
+    .carousel__prev {
+      left: -80px !important;
+    }
+    .carousel__next {
+      right: -80px !important;
+    }
+  }
+  .product-carousel-container {
     .carousel__viewport {
-      max-width: calc(100% - 150px);
-      margin-inline: auto;
+      max-width: 86% !important;
+    }
+    .carousel__prev {
+      left: 40px !important;
+    }
+    .carousel__next {
+      right: 40px !important;
     }
   }
   .reward-section {
@@ -1786,8 +1819,6 @@ body {
 }
 @media (min-width: 672px) and (max-width: 1024px) {
   .brands-carousel-container {
-    .carousel__viewport {
-      max-width: 100% !important;
-    }
+    max-width: 100% !important;
   }
 }

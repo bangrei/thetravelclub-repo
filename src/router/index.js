@@ -14,6 +14,34 @@ const routes = [
     },
   },
   {
+    path: "/bulk-orders",
+    name: "BulkOrdersPage",
+    component: function () {
+      return import("../presentation/pages/page-order/BulkOrdersPage.vue");
+    },
+  },
+  {
+    path: "/personalization",
+    name: "PersonalizationPage",
+    component: function () {
+      return import("../presentation/pages/page-personalization/PersonalizationPage.vue");
+    },
+  },
+  {
+    path: "/insurance",
+    name: "InsurancePage",
+    component: function () {
+      return import("../presentation/pages/page-insurance/InsurancePage.vue");
+    },
+  },
+  {
+    path: "/partnerships",
+    name: "PartnershipsPage",
+    component: function () {
+      return import("../presentation/pages/page-partnerships/PartnershipsPage.vue");
+    },
+  },
+  {
     path: "/terms-of-use",
     name: "TermsOfUse",
     component: function () {

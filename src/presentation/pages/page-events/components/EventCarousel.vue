@@ -12,10 +12,10 @@
 			<img class="carousel-img" :class="className" :alt="content.id" :src="content.image"/>
 		</slide>
 		<template #addons v-if="contentLength > 1">
-			<navigation>
+			<!-- <navigation>
 				<template #next><span class="carousel__icon material-icons-outlined md-32">chevron_right</span></template>
 				<template #prev><span class="carousel__icon material-icons-outlined md-32">chevron_left</span></template>
-			</navigation>
+			</navigation> -->
 			<div class="pagination__custom">
 				<pagination />
 			</div>
@@ -27,7 +27,7 @@
 import utility from "@/presentation/mixins/utility.js";
 import { isEmpty } from "lodash";
 import { reactive, ref } from "vue";
-import { Carousel, Navigation, Pagination, Slide } from 'vue3-carousel';
+import { Carousel, Pagination, Slide } from 'vue3-carousel';
 import 'vue3-carousel/dist/carousel.css';
 
 export default {
@@ -37,7 +37,6 @@ export default {
 		Carousel,
 		Slide,
 		Pagination,
-		Navigation,
 	},
     props: {
 		banners: {

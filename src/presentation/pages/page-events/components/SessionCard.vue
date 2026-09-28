@@ -266,7 +266,6 @@ export default {
                 text-transform: uppercase;
             }
             .card-title {
-                font-size: 14pt;
                 line-height: 22px;
                 font-weight: bold;
                 width: 100%;

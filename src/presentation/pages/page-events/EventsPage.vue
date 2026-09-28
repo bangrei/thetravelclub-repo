@@ -68,14 +68,7 @@
             </div>
           </div>
         </div>
-        <div class="block-content">
-          <h2>Contact Us</h2>
-          <span>For questions and inquiries, email us at: <b>thetravelclub.ph@primergrp.com</b></span>
-          <div class="social-links">
-            <img :src="instagramApp.src" alt="Instagram" width="35" height="35" @click="openExternalLink(instagramApp.url)">
-            <img :src="fbApp.src" alt="Facebook" width="35" height="35" @click="openExternalLink(fbApp.url)">
-          </div>
-        </div>
+        <base-contact-us/>
       </div>
     </template>
   </layout-variant-two>
@@ -87,8 +80,6 @@ import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
 import utility from "@/presentation/mixins/utility.js";
 import { isEmpty } from "lodash";
 import ActivitiesCarousel from "./components/ActivitiesCarousel.vue";
-import fbIcon from "@/assets/images/fb-icon.svg";
-import instagramIcon from "@/assets/images/instagram-icon.svg";
 import PartnersList from "./components/PartnersList.vue";
 import UpcomingEvents from "./components/UpcomingEvents.vue";
 import WhyContent from "./components/WhyContent.vue";
@@ -157,12 +148,6 @@ export default {
     },
   },
   computed: {
-    fbApp(){
-      return {src: fbIcon, url: "https://www.facebook.com/thetravelclubph/"};
-    },
-    instagramApp(){
-      return {src: instagramIcon, url: "https://www.instagram.com/thetravelclubph/?hl=en"}
-    },
     showFeeds() {
       return this.activeFooterNavId == 1;
     },
