@@ -8,7 +8,15 @@
     >
 			<slide v-for="(img, index) in contents" :key="index">
 				<div class="slide-wrapper">
-					<img class="carousel-img" alt="image" v-for="it in imagesArray(img)" :key="it" :src="it"/>
+					<img
+            class="carousel-img"
+            v-for="(it, imageIndex) in imagesArray(img)"
+            :key="imageKey(it, imageIndex)"
+            :alt="imageAlt(it)"
+            :src="imageSrc(it)"
+            :srcset="imageSrcset(it)"
+            sizes="(max-width: 671px) 100vw, 50vw"
+          />
 				</div>
 			</slide>
 			<template #addons v-if="contents.length > 1">
@@ -65,6 +73,22 @@ export default {
 			}
 			return [item];
 		},
+		imageKey(item, index){
+			if (item && typeof item === "object") return item.src || index;
+			return item || index;
+		},
+		imageAlt(item){
+			if (item && typeof item === "object") return item.alt || "image";
+			return "image";
+		},
+		imageSrc(item){
+			if (item && typeof item === "object") return item.src;
+			return item;
+		},
+		imageSrcset(item){
+			if (item && typeof item === "object") return item.srcset || null;
+			return null;
+		},
 	},
   async created() {
 		try {
@@ -94,9 +118,11 @@ export default {
 	gap: 10px;
 }
 .carousel-img {
-	height: 100%;
+	width: 100%;
+	height: auto;
 	aspect-ratio: 4/3;
   object-fit: cover;
+  display: block;
   mix-blend-mode: multiply;
 }
 @media (min-width: 672px) {

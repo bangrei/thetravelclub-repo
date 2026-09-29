@@ -211,7 +211,7 @@ export default {
   gap: 16px;
   padding: 24px;
   overflow-x: auto;
-  .menu-item {
+    .menu-item {
     display: flex;
     flex-direction: column;
     gap: 10px;

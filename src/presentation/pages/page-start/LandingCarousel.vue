@@ -234,7 +234,7 @@ export default {
 		}
 
 		&.image-2 {
-			background-image: url("@/assets/images/landing_2.jpg");
+			background-image: url("@/assets/images/landing_2-w1920.webp");
 		}
 
 		&.image-3 {
@@ -340,7 +340,15 @@ export default {
 			}
 		}
 	}
+	@media (max-width: 1024px) {
+		.landing-background-img.image-2 {
+			background-image: url("@/assets/images/landing_2-w1280.webp");
+		}
+	}
 	@media (max-width: 672px) {
+		.landing-background-img.image-2 {
+			background-image: url("@/assets/images/landing_2-w640.webp");
+		}
 		.slides {
 
 			.slide-item {

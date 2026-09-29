@@ -1,7 +1,13 @@
 <template>
   <div class="layout-flex">
     <div class="flex-item-image">
-      <img v-if="!isLoading" :src="loginBanner" alt="Landing" />
+      <img
+        v-if="!isLoading"
+        :src="bannerSrc"
+        :srcset="bannerSrcset"
+        sizes="(max-width: 800px) 100vw, 66vw"
+        alt="Landing"
+      />
     </div>
     <div class="flex-item-content">
       <img
@@ -31,6 +37,16 @@ export default {
   computed: {
     loginBanner() {
       return this.$store.getters.getLoginBanner;
+    },
+    bannerSrc() {
+      const banner = this.loginBanner;
+      if (banner && typeof banner === "object") return banner.src;
+      return banner;
+    },
+    bannerSrcset() {
+      const banner = this.loginBanner;
+      if (banner && typeof banner === "object") return banner.srcset;
+      return null;
     },
   },
   methods: {},

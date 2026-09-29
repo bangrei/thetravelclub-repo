@@ -14,9 +14,9 @@
               <img :src="require('@/assets/images/TTC-homebanner2_1920x522.png')" alt="" style="width:100%; height:auto;">
             </picture>
             <picture>
-              <source :srcset="require('@/assets/images/ttc-homebanner-mobile-2.png')" media="(max-width: 671px)">
-              <source :srcset="require('@/assets/images/TTC-homebanner_1920x555.png')" media="(min-width: 672px)">
-              <img :src="require('@/assets/images/TTC-homebanner_1920x555.png')" alt="" style="width:100%; height:auto;">
+              <source :srcset="homeBannerMobile.srcset" media="(max-width: 671px)" type="image/webp">
+              <source :srcset="homeBannerDesktop.srcset" media="(min-width: 672px)" type="image/webp">
+              <img :src="homeBannerDesktop.src" alt="" style="width:100%; height:auto;">
             </picture>
           </div>
         </div>
@@ -175,29 +175,39 @@ export default {
         : "";
       return `${homeService.getDayGreeting()},<br>${name}`;
     },
+    homeBannerMobile() {
+      return responsiveImage("ttc-homebanner-mobile-2");
+    },
+    homeBannerDesktop() {
+      return responsiveImage("TTC-homebanner_1920x555");
+    },
   },
   methods: {
     setBanners(){
+      const activity = (name) => ({
+        ...responsiveImage(name),
+        alt: "Camp activity",
+      });
       this.banners = [
 				[
-          require('@/assets/images/camp-activities-1.jpg'),
+          activity("camp-activities-1"),
           require('@/assets/images/camp-activities-2.jpg'),
           require('@/assets/images/camp-activities-3.jpg'),
         ],
 				[
           require('@/assets/images/camp-activities-4.jpg'),
-          require('@/assets/images/camp-activities-5.jpg'),
-				  require('@/assets/images/camp-activities-6.jpg'),
+          activity("camp-activities-5"),
+				  activity("camp-activities-6"),
         ],
         [
-          require('@/assets/images/camp-activities-7.jpg'),
+          activity("camp-activities-7"),
           require('@/assets/images/camp-activities-8.jpg'),
           require('@/assets/images/camp-activities-9.jpg'),
         ],
         [
-          require('@/assets/images/camp-activities-10.jpg'),
+          activity("camp-activities-10"),
           require('@/assets/images/camp-activities-11.jpg'),
-          require('@/assets/images/camp-activities-12.jpg'),
+          activity("camp-activities-12"),
         ],
 			];
       const souvenirSizes = "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw";

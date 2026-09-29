@@ -58,5 +58,54 @@
     640,
     768,
     1200
+  ],
+  "landing_2": [
+    640,
+    1280,
+    1920
+  ],
+  "ttc-homebanner-mobile-2": [
+    640,
+    750
+  ],
+  "TTC-homebanner_1920x555": [
+    640,
+    1280,
+    1920
+  ],
+  "camp-activities-1": [
+    640,
+    1280,
+    1440
+  ],
+  "camp-activities-5": [
+    640,
+    1280,
+    1920
+  ],
+  "camp-activities-6": [
+    640,
+    1280,
+    1920
+  ],
+  "camp-activities-7": [
+    640,
+    1280,
+    1920
+  ],
+  "camp-activities-10": [
+    640,
+    1280,
+    1920
+  ],
+  "camp-activities-12": [
+    640,
+    1280,
+    1920
+  ],
+  "homepage-banner-2": [
+    640,
+    1280,
+    1920
   ]
 }

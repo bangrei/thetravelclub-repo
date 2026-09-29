@@ -29,6 +29,7 @@
 <script>
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
 import PartnershipsItem from "./components/PartnershipsItem.vue";
+import { responsiveImage } from "@/utils/responsiveImage";
 export default {
   name: "PartnershipsPage",
   components: {
@@ -45,7 +46,7 @@ export default {
             "Discover our collection, and join The Travel Club’s complete travel ecosystem."
           ],
           banners: [
-            require('@/assets/images/camp-activities-1.jpg'),
+            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
             require('@/assets/images/camp-activities-2.jpg'),
             require('@/assets/images/camp-activities-3.jpg'),
           ],
@@ -58,7 +59,7 @@ export default {
             "Be part of the full experience our customers pack for."
           ],
           banners: [
-            require('@/assets/images/camp-activities-1.jpg'),
+            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
             require('@/assets/images/camp-activities-2.jpg'),
             require('@/assets/images/camp-activities-3.jpg'),
           ],
@@ -71,7 +72,7 @@ export default {
             "Be the next pop-up and share with us your menu."
           ],
           banners: [
-            require('@/assets/images/camp-activities-1.jpg'),
+            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
             require('@/assets/images/camp-activities-2.jpg'),
             require('@/assets/images/camp-activities-3.jpg'),
           ],
@@ -84,7 +85,7 @@ export default {
             "Let’s explore a partnership and redefine travel together."
           ],
           banners: [
-            require('@/assets/images/camp-activities-1.jpg'),
+            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
             require('@/assets/images/camp-activities-2.jpg'),
             require('@/assets/images/camp-activities-3.jpg'),
           ],

@@ -3,6 +3,7 @@ import article from "./modules/article";
 import notification from "./modules/notification";
 import register from "./modules/register";
 import survey from "./modules/survey";
+import { responsiveImage } from "@/utils/responsiveImage";
 
 export default createStore({
   state: {
@@ -478,7 +479,7 @@ export default createStore({
       );
     },
     getLoginBanner(state) {
-      return state.loginBanner || require("@/assets/images/homepage-banner-2.jpg");
+      return state.loginBanner || responsiveImage("homepage-banner-2");
     },
     getAllowedPaymentTypes(state) {
       return state.allowedPaymentTypes;

@@ -51,6 +51,7 @@
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
 import StoresTable from "../page-luggage/components/StoresTable.vue";
 import PersonalizeItem from "./components/PersonalizeItem.vue";
+import { responsiveImage } from "@/utils/responsiveImage";
 export default {
   name: "PersonalizationPage",
   components: {
@@ -110,7 +111,7 @@ export default {
       ],
       cricutTitle: "Create precision-cut decals from custom designs or text for a quick and easy way to personalize items like water bottles, mugs, tablets, and more. Materials and colors for adhesive vinyls are subject to availability.",
       cricutBanners: [
-        require('@/assets/images/camp-activities-1.jpg'),
+        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
         require('@/assets/images/camp-activities-2.jpg'),
         require('@/assets/images/camp-activities-3.jpg'),
       ],
@@ -121,7 +122,7 @@ export default {
       ],
       heatPressTitle: "Apply custom designs or text on fabric items like tote bags or backpacks. Specialized vinyls used in this process is considered durable and can withstand regular washing, but still subject to natural wear-and-tear. For heat-press compatibility and expert guidance, please consult at any The Travel Club+ branches.",
       heatPressBanners: [
-        require('@/assets/images/camp-activities-1.jpg'),
+        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
         require('@/assets/images/camp-activities-2.jpg'),
         require('@/assets/images/camp-activities-3.jpg'),
       ],
@@ -133,7 +134,7 @@ export default {
       ],
       monogramTitle: "Permanently etch symbols, names, or initials on small leather goods like luggage tags or keychains for a more elevated, subtle approach to personalization. For leather types and colors compatible with our engraving equipment, please consult at any The Travel Club+ branches. ",
       monogramBanners: [
-        require('@/assets/images/camp-activities-1.jpg'),
+        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
         require('@/assets/images/camp-activities-2.jpg'),
         require('@/assets/images/camp-activities-3.jpg'),
       ],
@@ -145,7 +146,7 @@ export default {
       ],
       embroideryTitle: "Customize Spacetastic packing cubes and organizers through The Travel Club Concierge. For  orders and inquiries, please consult at any The Travel Club+ branches.",
       embroideryBanners: [
-        require('@/assets/images/camp-activities-1.jpg'),
+        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
         require('@/assets/images/camp-activities-2.jpg'),
         require('@/assets/images/camp-activities-3.jpg'),
       ],
