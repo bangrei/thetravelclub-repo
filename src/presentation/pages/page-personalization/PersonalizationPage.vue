@@ -7,6 +7,7 @@
     <template v-slot:body>
       <div class="pr-container white-smokey">
         <div class="pr-banner">
+          <img class="pr-image" alt="Personalization" :src="require('@/assets/images/personalization-banner.png')"/>
           <div class="pr-banner-content">
             <div class="pr-banner-text">Make it yours. Make it you.</div>
             <div class="pr-banner-text">
@@ -18,7 +19,8 @@
           <div class="pr-title">Personalize your travel items at The Travel Club</div>
           <div class="pr-grid-container">
             <div class="pr-grid-item" v-for="item in items" :key="item.id">
-              <span class="pr-grid-icon material-icons-outlined">{{ item.icon }}</span>
+              <img v-if="item.image" class="pr-grid-image" :alt="item.name" :src="require('@/assets/images/'+ item.image)"/>
+              <span v-else class="pr-grid-icon material-icons-outlined">{{ item.icon }}</span>
               <span class="pr-grid-title">{{ item.name }}</span>
             </div>
           </div>
@@ -56,22 +58,26 @@ export default {
         {
           id: 1,
           name: "CRICUT PRINTING",
-          icon: "print"
+          icon: "print",
+          image: "cricut-printing-icon.png",
         },
         {
           id: 2,
           name: "HEAT PRESS PRINTING",
-          icon: "iron"
+          icon: "iron",
+          image: "heatpress-icon.png",
         },
         {
           id: 3,
           name: "LEATHER MONOGRAMMING",
-          icon: "monitor_heart"
+          icon: "monitor_heart",
+          image: "leather-monogramming-icon.png",
         },
         {
           id: 4,
           name: "EMBROIDERY",
-          icon: "palette"
+          icon: "palette",
+          image: "embroidery-icon.png"
         }
       ],
       tableHeader: [
@@ -158,13 +164,34 @@ export default {
 }
 .pr-banner {
   width: 100%;
-  aspect-ratio: 5/3;
-  background: $secondary-color-90;
+  aspect-ratio: 5/4;
+  background: black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  &::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    content: "";
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(0,0,0,0.4);
+  }
   .pr-image {
     width: 100%;
     aspect-ratio: inherit;
+    object-fit: cover;
+    position: absolute;
+    pointer-events: none;
+    z-index: 0;
   }
   .pr-banner-content {
+    z-index: 2;
     width: 100%;
     height: 100%;
     max-width: 650px;
@@ -213,6 +240,10 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  .pr-grid-image {
+    height: 100px;
+    object-fit: contain;
+  }
   .pr-grid-icon {
     width: fit-content;
     margin-inline: auto;
@@ -223,6 +254,11 @@ export default {
     font-size: 16px;
     line-height: 22px;
     text-align: center;
+    max-width: 100px;
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 .pr-body {
@@ -231,7 +267,7 @@ export default {
 }
 @media (min-width: 672px) {
   .pr-banner {
-    aspect-ratio: 5/2;
+    aspect-ratio: 5/1.5;
     .pr-banner-content {
       padding-inline: 7% !important;
     }

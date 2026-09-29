@@ -9,7 +9,11 @@
                 :banners="item?.parent.banners"
             />
         </div>
-        <div class="card-content" v-if="isAvailable">
+        <div class="card-unavailable" v-else>
+            <span class="material-icons-outlined">wrong_location</span>
+            <span class="trip-info">Trip unavailable</span>
+        </div>
+        <div class="card-content">
             <div class="card-title">{{ item.name }}</div>
             <div class="card-inline">
                 <span class="inline-text">🗓 {{ startDateDisplay }}</span>
@@ -26,10 +30,6 @@
                 <span class="inline-text primary">{{ item.ratingData?.ratingPoints }} from {{ item.ratingData?.reviewsList.length }} reviews</span>
             </div>
             <div class="card-price">{{ item.price == 0 ? 'FREE' : currency(item.price) }}</div>
-        </div>
-        <div class="card-unavailable" v-else>
-            <span class="material-icons-outlined">wrong_location</span>
-            <span class="trip-info">Trip unavailable</span>
         </div>
     </div>
 </template>
@@ -93,7 +93,7 @@ export default {
     },
     methods: {
         clickEventDetails() {
-            if(!this.isAvailable) return;
+            // if(!this.isAvailable) return;
             this.$router.push({
                 name: "EventDetails",
                 params: {
@@ -347,8 +347,7 @@ export default {
     }
     .card-unavailable {
         width: 100%;
-        height: 100%;
-        min-height: inherit;
+        aspect-ratio: 5/3;
         display: flex;
         align-items: center;
         justify-content: center;

@@ -201,19 +201,10 @@ export default {
 				// require('@/assets/images/camp-activities-13.jpg')
 			];
       this.orderBanners = [
-				require('@/assets/images/camp-activities-1.jpg'),
-        require('@/assets/images/camp-activities-2.jpg'),
-        require('@/assets/images/camp-activities-3.jpg'),
-        require('@/assets/images/camp-activities-4.jpg'),
-        require('@/assets/images/camp-activities-5.jpg'),
-        require('@/assets/images/camp-activities-6.jpg'),
-        require('@/assets/images/camp-activities-7.jpg'),
-        require('@/assets/images/camp-activities-8.jpg'),
-        require('@/assets/images/camp-activities-9.jpg'),
-        require('@/assets/images/camp-activities-10.jpg'),
-        require('@/assets/images/camp-activities-11.jpg'),
-        require('@/assets/images/camp-activities-12.jpg'),
-				require('@/assets/images/camp-activities-13.jpg')
+				require('@/assets/images/souvenir-1.png'),
+        require('@/assets/images/souvenir-2.png'),
+        require('@/assets/images/souvenir-3.png'),
+        require('@/assets/images/souvenir-4.png'),
 			]
     },
     stateFeed(feed) {
@@ -370,7 +361,7 @@ export default {
 <style scoped lang="scss">
 .white-smokey {
   background: $white-smokey;
-  padding-block: 24px;
+  padding-bottom: 24px;
   width: 100%;
   display: flex;
   flex-direction: column;

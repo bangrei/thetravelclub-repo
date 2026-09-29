@@ -1,7 +1,6 @@
 <template>
   <div class="partners-container">
     <div class="partners-list">
-      <!-- <div class="partner-brand" v-for="brand in brands" :key="brand"></div> -->
       <carousel ref="partnersCarousel" 
         :transition="500" 
         :wrap-around="true" 
@@ -9,14 +8,16 @@
         :itemsToShow="slidesPerView">
         <slide v-for="(img, index) in contents" :key="index">
           <div class="partner-brand">
-            <!-- <img class="partner-img" alt="image" :src="img"/> -->
+            <img width="120" height="50" :alt="img" :src="require('@/assets/logo/' + img)"/>
           </div>
         </slide>
       </carousel>
     </div>
     <div class="partners-menu">
-      <router-link class="menu-item" v-for="item in menu" :key="item.link" :to="item.link">
-        <div class="menu-image"></div>
+      <router-link :class="['menu-item', {'disabled': !item.enabled}]" v-for="item in menu" :key="item.link" :to="item.link">
+        <div class="menu-image">
+          <img v-if="item.image" width="120" height="50" :alt="img" :src="require('@/assets/images/' + item.image)"/>
+        </div>
         <span class="menu-title">{{ item.name }}</span>
       </router-link>
     </div>
@@ -37,66 +38,66 @@ export default {
   data(){
     return {
       brands: [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r"
+        "Ascott.png",
+        "EtonHouse.png",
+        "GCash.png",
+        "HenryHotel.png",
+        "Maya.png",
+        "MayaBlack.png",
+        "PioneerInsurance.png",
+        "PNB.png",
+        "Spacetastic.png",
+        "Ascott.png",
+        "EtonHouse.png",
+        "GCash.png",
+        "HenryHotel.png",
+        "Maya.png",
+        "MayaBlack.png",
+        "PioneerInsurance.png",
+        "PNB.png",
+        "Spacetastic.png"
       ],
       menu: [
         {
           name: "Luggage Services",
           link: "/luggage-services",
-          image: "",
+          image: "luggage-repair.png",
           enabled: true,
         },
         {
           name: "Personalization",
           link: "/personalization",
-          image: "",
+          image: "personalization.png",
           enabled: true,
         },
         {
           name: "Experiences & Accomodation",
           link: "/experiences-and-accomodation",
-          image: "",
+          image: "experiences.png",
           enabled: true,
         },
         {
           name: "The Travel Club Events",
           link: "/the-travel-club-events",
-          image: "",
+          image: "club-events.jpg",
           enabled: true,
         },
         {
           name: "Insurance",
           link: "/insurance",
-          image: "",
+          image: "insurance.png",
           enabled: true,
         },
         {
           name: "Partnerships",
           link: "/partnerships",
-          image: "",
+          image: "partnership.jpg",
           enabled: true,
         },
         {
           name: "Rewards (Coming Soon)",
           link: "/rewards",
-          image: "",
+          image: "bulk-order.png",
           enabled: false,
         },
       ],
@@ -183,18 +184,17 @@ export default {
 }
 .partners-list {
   width: 100%;
-  //max-width: 100%;
-  //overflow-x: auto;
-  padding-bottom: 10px;
-  //display: flex;
-  //align-items: center;
-  //gap: 16px;
+  display: flex;
+  align-items: center;
+  padding-block: 10px;
+  background: $white;
   .partner-brand {
-    min-height: 50px;
-    background: $secondary-color-20;
-    min-width: 120px;
-    border-radius: 12px;
+    height: 50px;
+    overflow: hidden;
+    width: 100%;
+    padding-inline: 20px;
     img {
+      width: 100%;
       height: 100%;
       object-fit: contain;
     }
@@ -236,6 +236,12 @@ export default {
       white-space: nowrap;
       &:hover {
         opacity: 0.7;
+      }
+    }
+    &:is(.disabled){
+      pointer-events: none;
+      img {
+        filter: grayscale(1);
       }
     }
   }
