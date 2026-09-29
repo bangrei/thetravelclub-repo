@@ -7,7 +7,12 @@
     <template v-slot:body>
       <div class="luggage-page">
         <div class="luggage-banner-wrapper">
-          <img alt="luggage repair" :src="require('@/assets/images/luggage-repair.png')"/>
+          <base-responsive-image
+            name="luggage-repair"
+            alt="luggage repair"
+            sizes="100vw"
+            loading="eager"
+          />
           <div class="luggage-banner-content">
             <span class="luggage-banner-text">Keep the journey going.</span>
             <span class="luggage-banner-text">Now servicing repairs for all luggage brands, from and beyond our catalog.</span>
@@ -127,6 +132,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
   &::before {
     position: absolute;
     left: 0;
@@ -140,9 +146,10 @@ export default {
   }
   img {
     width: 100%;
-    aspect-ratio: inherit;
+    height: 100%;
     object-fit: cover;
     position: absolute;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
   }
@@ -186,10 +193,17 @@ export default {
     }
   }
 }
-@media (min-width: 672px) {
+@media (min-width: 672px) and (max-width: 1024px) {
+  .luggage-banner-wrapper {
+    aspect-ratio: 16/9 !important;
+  }
+}
+@media (min-width: 1025px) {
   .luggage-banner-wrapper {
     aspect-ratio: 5/1.5 !important;
   }
+}
+@media (min-width: 672px) {
   .luggage-body {
     padding-inline: 7%;
   }

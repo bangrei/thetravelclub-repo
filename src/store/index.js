@@ -473,7 +473,6 @@ export default createStore({
       return state.hideRating == true;
     },
     getEventBanner(state) {
-      //return state.eventBanner || require("@/assets/images/event-bg-new3.jpeg");
       return (
         state.eventBanner || require("@/assets/images/homepage-banner.jpg")
       );

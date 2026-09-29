@@ -16,7 +16,12 @@
     <div class="partners-menu">
       <router-link :class="['menu-item', {'disabled': !item.enabled}]" v-for="item in menu" :key="item.link" :to="item.link">
         <div class="menu-image">
-          <img v-if="item.image" width="120" height="50" :alt="img" :src="require('@/assets/images/' + item.image)"/>
+          <base-responsive-image
+            v-if="item.image"
+            :name="item.image"
+            :alt="item.name"
+            sizes="(max-width: 671px) 72vw, (max-width: 1024px) 46vw, 280px"
+          />
         </div>
         <span class="menu-title">{{ item.name }}</span>
       </router-link>
@@ -61,43 +66,43 @@ export default {
         {
           name: "Luggage Services",
           link: "/luggage-services",
-          image: "luggage-repair.png",
+          image: "luggage-repair",
           enabled: true,
         },
         {
           name: "Personalization",
           link: "/personalization",
-          image: "personalization.png",
+          image: "personalization",
           enabled: true,
         },
         {
           name: "Experiences & Accomodation",
           link: "/experiences-and-accomodation",
-          image: "experiences.png",
+          image: "experiences",
           enabled: true,
         },
         {
           name: "The Travel Club Events",
           link: "/the-travel-club-events",
-          image: "club-events.jpg",
+          image: "club-events",
           enabled: true,
         },
         {
           name: "Insurance",
           link: "/insurance",
-          image: "insurance.png",
+          image: "insurance",
           enabled: true,
         },
         {
           name: "Partnerships",
           link: "/partnerships",
-          image: "partnership.jpg",
+          image: "partnership",
           enabled: true,
         },
         {
           name: "Rewards (Coming Soon)",
           link: "/rewards",
-          image: "bulk-order.png",
+          image: "bulk-order",
           enabled: false,
         },
       ],
@@ -210,7 +215,10 @@ export default {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    min-width: 200px;
+    flex: 0 0 72vw;
+    width: 72vw;
+    min-width: 220px;
+    max-width: 320px;
     text-decoration: none;
     .menu-image {
       border-radius: 24px;
@@ -246,14 +254,31 @@ export default {
     }
   }
 }
-@media (min-width: 672px) {
+@media (min-width: 672px) and (max-width: 1024px) {
   .partners-menu {
     padding-inline: 7%;
     flex-wrap: wrap;
     justify-content: center;
     overflow-x: hidden;
     .menu-item {
-      width: 20% !important;
+      flex: 1 1 calc(50% - 16px);
+      width: calc(50% - 16px);
+      min-width: 0;
+      max-width: none;
+    }
+  }
+}
+@media (min-width: 1025px) {
+  .partners-menu {
+    padding-inline: 7%;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-x: hidden;
+    .menu-item {
+      flex: 1 1 calc(20% - 16px);
+      width: calc(20% - 16px);
+      min-width: 0;
+      max-width: 280px;
     }
   }
 }

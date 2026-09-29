@@ -7,7 +7,13 @@
     <template v-slot:body>
       <div class="pr-container white-smokey">
         <div class="pr-banner">
-          <img class="pr-image" alt="Personalization" :src="require('@/assets/images/personalization-banner.png')"/>
+          <base-responsive-image
+            class="pr-image"
+            name="personalization-banner"
+            alt="Personalization"
+            sizes="100vw"
+            loading="eager"
+          />
           <div class="pr-banner-content">
             <div class="pr-banner-text">Make it yours. Make it you.</div>
             <div class="pr-banner-text">
@@ -171,6 +177,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  overflow: hidden;
   &::before {
     position: absolute;
     left: 0;
@@ -184,9 +191,10 @@ export default {
   }
   .pr-image {
     width: 100%;
-    aspect-ratio: inherit;
+    height: 100%;
     object-fit: cover;
     position: absolute;
+    inset: 0;
     pointer-events: none;
     z-index: 0;
   }
@@ -265,9 +273,18 @@ export default {
   width: 100%;
   padding: 24px;
 }
-@media (min-width: 672px) {
+@media (min-width: 672px) and (max-width: 1024px) {
+  .pr-banner {
+    aspect-ratio: 16/9;
+  }
+}
+@media (min-width: 1025px) {
   .pr-banner {
     aspect-ratio: 5/1.5;
+  }
+}
+@media (min-width: 672px) {
+  .pr-banner {
     .pr-banner-content {
       padding-inline: 7% !important;
     }

@@ -4,11 +4,19 @@
       :transition="500" 
       :wrap-around="true" 
       :autoplay="autoPlayTimer"
-      :itemsToShow="isDesktop ? 3 : 2"
+      :itemsToShow="slidesToShow"
     >
 			<slide v-for="(img, index) in contents" :key="index">
 				<div class="slide-wrapper">
-					<img class="carousel-img" alt="image" v-for="it in imagesArray(img)" :key="it" :src="it"/>
+					<img
+            class="carousel-img"
+            v-for="(it, imageIndex) in imagesArray(img)"
+            :key="imageKey(it, imageIndex)"
+            :alt="imageAlt(it)"
+            :src="imageSrc(it)"
+            :srcset="imageSrcset(it)"
+            :sizes="imageSizes(it)"
+          />
 				</div>
 			</slide>
 			<template #addons v-if="contentLength > 1">
@@ -48,6 +56,7 @@ export default {
 			currentContent: null,
 			currentActiveIndex: 0,
 			isDesktop: true,
+			slidesToShow: 2,
 			slidesPerView: 3,
 			autoPlayTimer: 3000,
 		};
@@ -76,6 +85,26 @@ export default {
 			}
 			return [item];
 		},
+		imageKey(item, index){
+			if (item && typeof item === "object") return item.src || index;
+			return item || index;
+		},
+		imageAlt(item){
+			if (item && typeof item === "object") return item.alt || "image";
+			return "image";
+		},
+		imageSrc(item){
+			if (item && typeof item === "object") return item.src;
+			return item;
+		},
+		imageSrcset(item){
+			if (item && typeof item === "object") return item.srcset || null;
+			return null;
+		},
+		imageSizes(item){
+			if (item && typeof item === "object" && item.sizes) return item.sizes;
+			return "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw";
+		},
 		setSwiperRef(swiper) {
 			this.swiperRef = swiper;
 		},
@@ -91,7 +120,11 @@ export default {
 			this.currentActiveIndex--;
 		},
 		resizeBannerHandler(){
-      this.isDesktop = window.innerWidth >= 672;
+      const width = window.innerWidth;
+      this.isDesktop = width >= 672;
+      if (width >= 1025) this.slidesToShow = 3;
+      else if (width >= 672) this.slidesToShow = 2;
+      else this.slidesToShow = 1;
 			this.slidesPerView = this.isDesktop ? 7 : 4;
     },
 	},
@@ -127,10 +160,22 @@ export default {
 	gap: 10px;
 }
 .carousel-img {
-	height: 100%;
-	aspect-ratio: 4/3;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 4 / 3;
   object-fit: cover;
+  display: block;
   mix-blend-mode: multiply;
+}
+@media (min-width: 672px) and (max-width: 1024px) {
+	.carousel-img {
+		aspect-ratio: 4 / 3;
+	}
+}
+@media (min-width: 1025px) {
+	.carousel-img {
+		aspect-ratio: 16 / 10;
+	}
 }
 @media (min-width: 672px) {
 	.slide-wrapper {

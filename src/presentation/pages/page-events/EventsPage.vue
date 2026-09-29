@@ -83,6 +83,7 @@ import ActivitiesCarousel from "./components/ActivitiesCarousel.vue";
 import PartnersList from "./components/PartnersList.vue";
 import UpcomingEvents from "./components/UpcomingEvents.vue";
 import WhyContent from "./components/WhyContent.vue";
+import { responsiveImage } from "@/utils/responsiveImage";
 
 export default {
   name: "EventsPage",
@@ -198,14 +199,13 @@ export default {
           require('@/assets/images/camp-activities-11.jpg'),
           require('@/assets/images/camp-activities-12.jpg'),
         ],
-				// require('@/assets/images/camp-activities-13.jpg')
 			];
-      this.orderBanners = [
-				require('@/assets/images/souvenir-1.png'),
-        require('@/assets/images/souvenir-2.png'),
-        require('@/assets/images/souvenir-3.png'),
-        require('@/assets/images/souvenir-4.png'),
-			]
+      const souvenirSizes = "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw";
+      this.orderBanners = ["souvenir-1", "souvenir-2", "souvenir-3", "souvenir-4"].map((name) => ({
+        ...responsiveImage(name),
+        alt: "Souvenir",
+        sizes: souvenirSizes,
+      }));
     },
     stateFeed(feed) {
       this.$store.dispatch("setStateFeedsPage", {
@@ -608,7 +608,6 @@ export default {
 
     &.show-background {
       min-width: 100%;
-      /* background-image: url("@/assets/images/event-bg-new2.jpeg"); */
       background-image: url("@/assets/images/homepage-banner.jpg");
       background-position: center;
       background-size: cover;

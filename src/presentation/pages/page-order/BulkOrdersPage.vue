@@ -7,7 +7,12 @@
     <template v-slot:body>
       <div class="bulk-container">
         <div class="bulk-banner">
-          <img alt="Bulk Order" :src="require('@/assets/images/bulk-order.png')"/>
+          <base-responsive-image
+            name="bulk-order"
+            alt="Bulk Order"
+            sizes="100vw"
+            loading="eager"
+          />
         </div>
         <div class="bulk-content">
           <div class="bulk-head">Bulk Order Process</div>
@@ -156,6 +161,7 @@ iframe {
   aspect-ratio: 5/4;
   background: $secondary-color-90;
   position: relative;
+  overflow: hidden;
   &::before {
     position: absolute;
     left: 0;
@@ -169,8 +175,9 @@ iframe {
   }
   img {
     width: 100%;
-    aspect-ratio: inherit;
+    height: 100%;
     object-fit: cover;
+    display: block;
   }
 }
 .bulk-content {
@@ -295,10 +302,17 @@ iframe {
     }
   }
 }
-@media (min-width: 672px) {
+@media (min-width: 672px) and (max-width: 1024px) {
+  .bulk-banner {
+    aspect-ratio: 16/9 !important;
+  }
+}
+@media (min-width: 1025px) {
   .bulk-banner {
     aspect-ratio: 5/1.5 !important;
   }
+}
+@media (min-width: 672px) {
   .bulk-grid-process {
     padding-inline: 7%;
   }
