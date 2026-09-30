@@ -7,6 +7,13 @@
     <template v-slot:body>
       <div class="pr-container white-smokey">
         <div class="pr-banner">
+          <base-responsive-image
+            class="pr-image"
+            name="partnership-banner"
+            alt="Partnership"
+            sizes="100vw"
+            loading="eager"
+          />
           <div class="pr-banner-content">
             <div class="pr-banner-text">Join our network of global partners today.</div>
           </div>
@@ -45,11 +52,11 @@ export default {
             "As the definitive, one-stop shop for travel essentials, The Travel Club has carefully curated a world-class portfolio of premium brands that bring together smart solutions, on-the-go convenience, and quality performance for the modern traveler.",
             "Discover our collection, and join The Travel Club’s complete travel ecosystem."
           ],
-          banners: [
-            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-            require('@/assets/images/camp-activities-2.jpg'),
-            require('@/assets/images/camp-activities-3.jpg'),
-          ],
+          banners: ["partnership","partnership"].map((name) => ({
+            ...responsiveImage(name),
+            alt: "Merchant Partners",
+            sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+          })),
           reversed: false
         },
         {
@@ -58,11 +65,11 @@ export default {
             "The Travel Club goes beyond traditional retail in partnership with expert providers across tour itineraries, accommodations, and experience packages to offer the full travel lifecycle. We align with each partner to ensure a seamless transition from pre-departure preparations to on-ground adventures. After all, travel is not just about the destination, but the quality of the journey.",
             "Be part of the full experience our customers pack for."
           ],
-          banners: [
-            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-            require('@/assets/images/camp-activities-2.jpg'),
-            require('@/assets/images/camp-activities-3.jpg'),
-          ],
+          banners: ["experiences","experiences"].map((name) => ({
+            ...responsiveImage(name),
+            alt: "Experience Providers",
+            sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+          })),
           reversed: true
         },
         {
@@ -71,11 +78,11 @@ export default {
             "Available in select doors, The Travel Club+ features a rotating line-up of cafes and vendors serving exclusive menu items intentionally located by our intimate lounge area to create the perfect third space for our community.",
             "Be the next pop-up and share with us your menu."
           ],
-          banners: [
-            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-            require('@/assets/images/camp-activities-2.jpg'),
-            require('@/assets/images/camp-activities-3.jpg'),
-          ],
+          banners: ["fnb-vendor","fnb-vendor"].map((name) => ({
+            ...responsiveImage(name),
+            alt: "F&B Vendors",
+            sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+          })),
           reversed: false
         },
         {
@@ -84,11 +91,11 @@ export default {
             "The Travel Club continues to grow its platform for all things travel and serves as a strategic gateway for like-minded partners who share our vision. There is an opportunity for every stage of the customer journey.",
             "Let’s explore a partnership and redefine travel together."
           ],
-          banners: [
-            { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-            require('@/assets/images/camp-activities-2.jpg'),
-            require('@/assets/images/camp-activities-3.jpg'),
-          ],
+          banners: ["mastercard","mastercard"].map((name) => ({
+            ...responsiveImage(name),
+            alt: "The Travel Club",
+            sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+          })),
           reversed: true
         }
       ],
@@ -108,16 +115,39 @@ export default {
 }
 .pr-banner {
   width: 100%;
-  aspect-ratio: 5/3;
-  background: $secondary-color-90;
+  aspect-ratio: 5/4;
+  background: black;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+  &::before {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    content: "";
+    z-index: 1;
+    pointer-events: none;
+    background: rgba(0,0,0,0.4);
+  }
   .pr-image {
     width: 100%;
-    aspect-ratio: inherit;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
   }
   .pr-banner-content {
+    z-index: 2;
     width: 100%;
     height: 100%;
-    max-width: 600px;
+    max-width: 650px;
     margin-inline: auto;
     display: flex;
     flex-direction: column;
@@ -130,12 +160,6 @@ export default {
       display: block;
       margin-bottom: 24px;
       line-height: 28px;
-      &:is(.short){
-        max-width: 300px;
-        width: fit-content;
-        overflow: hidden;
-        margin-inline: auto;
-      }
     }
   }
 }
@@ -207,9 +231,18 @@ export default {
   width: 100%;
   padding: 24px;
 }
+@media (min-width: 672px) and (max-width: 1024px) {
+  .pr-banner {
+    aspect-ratio: 16/9;
+  }
+}
+@media (min-width: 1025px) {
+  .pr-banner {
+    aspect-ratio: 5/1.5;
+  }
+}
 @media (min-width: 672px) {
   .pr-banner {
-    aspect-ratio: 5/2;
     .pr-banner-content {
       padding-inline: 7% !important;
     }

@@ -42,6 +42,20 @@ const routes = [
     },
   },
   {
+    path: "/experiences-and-accomodation",
+    name: "ExperiencesAccommodationPage",
+    component: function () {
+      return import("../presentation/pages/page-experiences/ExperiencesPage.vue");
+    },
+  },
+  {
+    path: "/experiences-and-events",
+    name: "ExperiencesAndEventsPage",
+    component: function () {
+      return import("../presentation/pages/page-experiences-events/ExperiencesAndEventsPage.vue");
+    },
+  },
+  {
     path: "/terms-of-use",
     name: "TermsOfUse",
     component: function () {

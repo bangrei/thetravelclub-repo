@@ -1782,6 +1782,19 @@ body {
     }
   }
 }
+.brands-carousel-container {
+  .carousel {
+    height: 100%;
+  }
+  .carousel__viewport {
+    height: 100%;
+  }
+  .carousel__slide {
+    &:not(:first-child){
+      border-left: 10px solid transparent;
+    }
+  }
+}
 @media (min-width: 672px) {
   .brands-carousel-container {
     max-width: calc(100% - 150px);
@@ -1792,10 +1805,10 @@ body {
       color: $white;
     }
     .carousel__prev {
-      left: -80px !important;
+      left: -60px !important;
     }
     .carousel__next {
-      right: -80px !important;
+      right: -70px !important;
     }
   }
   .product-carousel-container {

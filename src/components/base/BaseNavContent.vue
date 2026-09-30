@@ -21,7 +21,7 @@
     <div class="header-wrapper desktop-menu" v-if="!overrideNavs">
       <ul class="list-of-menu">
         <li><router-link to="/services">Services</router-link></li>
-        <li><router-link to="/experiences">Experiences & Events</router-link></li>
+        <li><router-link to="/experiences-and-events">Experiences & Events</router-link></li>
         <li><router-link to="/partnerships">Partnerships</router-link></li>
         <li><router-link to="/rewards">Rewards</router-link></li>
         <li><router-link to="/bulk-orders">Bulk Orders</router-link></li>

@@ -9,50 +9,31 @@
         <div class="pr-banner">
           <base-responsive-image
             class="pr-image"
-            name="insurance"
-            alt="Insurance"
+            name="experiences-banner"
+            alt="Experiences and events"
             sizes="100vw"
             loading="eager"
           />
           <div class="pr-banner-content">
-            <div class="pr-banner-text short">Travel is unpredictable. Your response shouldn't be.</div>
+            <div class="pr-banner-text short">Travel smarter, travel better.</div>
             <div class="pr-banner-text">
-              Safeguard your trip with The Travel Club’s trusted insurance providers.
+              Join in-store events to unlock expert tips, gain premium perks, and discover a new way to travel.
             </div>
           </div>
         </div>
-        <div class="pr-content">
-          <a :href="registerLink" class="button" target="_blank">Register Here <i class="material-icons-outlined">launch</i></a>
-          <div class="pr-title">Pioneer Insurance</div>
-          <InsuranceItem :image="pioneerImage" :items="pioneerItems"/>
-          <base-contact-us/>
-        </div>
+        <base-contact-us/>
       </div>
     </template>
   </layout-variant-two>
 </template>
 <script>
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
-import InsuranceItem from "./components/InsuranceItem.vue";
 export default {
-  name: "PersonalizationPage",
+  name: "ExperiencesAndEventsPage",
   components: {
     LayoutVariantTwo,
-    InsuranceItem,
   },
-  data(){
-    return {
-      pioneerImage: 'experiences-banner',
-      pioneerItems: [
-        `Travel insurance isn’t everyone’s priority, but it might as well be.`,
-        `Baggage loss, flight delays, trip cancellations, and even travel accidents resulting in medical treatments can definitely ruin any traveler’s much awaited adventure. It can also be time consuming and stress-inducing to navigate unforeseen circumstances when they happen. "Unforeseen" does not have to mean "unprepared".`,
-        `SafeTrip by Pioneer Insurance clarifies what’s covered, so you don’t have to wait for the chaos to make decisions for you`,
-        `Stay insured and get your trip back on track.`
-      ],
-      registerLink: "https://products.pioneer.com.ph/PrimerGroup/Gfz96737O2kLWMdQxttX8M4dnFy9e7e4bHtVxEQwlV8l2OxQJhOBT6paz9REMk3rKw1KzbNHJvSewzunTpoLyw"
-    }
-  }
-}
+};
 </script>
 <style scoped lang="scss">
 .pr-container {

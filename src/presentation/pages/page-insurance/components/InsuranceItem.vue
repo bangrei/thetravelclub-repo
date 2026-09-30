@@ -5,7 +5,13 @@
         <p v-for="(item, index) in items" :key="index">{{ item }}</p>
       </div>
       <div class="inline-content-image">
-        <img :src="image"/>
+        <base-responsive-image
+          class="pr-image"
+          :name="image"
+          alt="Insurance"
+          sizes="100vw"
+          loading="eager"
+        />
       </div>
     </div>
   </div>

@@ -150,14 +150,7 @@ export default {
 </script>
 <style scoped lang="scss">
 .brands-carousel-container {
-  padding-block: 24px;
-}
-.slide-wrapper {
-	max-height: auto;
-	margin-right: 10px;
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+  width: 100%;
 }
 .carousel-img {
 	width: 100%;

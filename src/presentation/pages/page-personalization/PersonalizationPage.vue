@@ -110,22 +110,22 @@ export default {
         },
       ],
       cricutTitle: "Create precision-cut decals from custom designs or text for a quick and easy way to personalize items like water bottles, mugs, tablets, and more. Materials and colors for adhesive vinyls are subject to availability.",
-      cricutBanners: [
-        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-        require('@/assets/images/camp-activities-2.jpg'),
-        require('@/assets/images/camp-activities-3.jpg'),
-      ],
+      cricutBanners: ["souvenir-4","souvenir-4"].map((name) => ({
+        ...responsiveImage(name),
+        alt: "Cricut Printing",
+        sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+      })),
       cricutItems: [
         "Select: Provide your own design or choose a font for custom text",
         "Customize: Pick a size and material that fits your item",
         "Apply: Once cut, these decals can be applied to most smooth, flat surfaces"
       ],
       heatPressTitle: "Apply custom designs or text on fabric items like tote bags or backpacks. Specialized vinyls used in this process is considered durable and can withstand regular washing, but still subject to natural wear-and-tear. For heat-press compatibility and expert guidance, please consult at any The Travel Club+ branches.",
-      heatPressBanners: [
-        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-        require('@/assets/images/camp-activities-2.jpg'),
-        require('@/assets/images/camp-activities-3.jpg'),
-      ],
+      heatPressBanners: ["souvenir-5","souvenir-5"].map((name) => ({
+        ...responsiveImage(name),
+        alt: "Heat Press Printing",
+        sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+      })),
       heatPressItems: [
         "Design: Choose your custom text or provide a digital graphic for the transfer",
         "Position: Precisely align the location of your design on your chosen fabric item",
@@ -133,11 +133,11 @@ export default {
         "Finish: After a brief cooling period, the backing is removed, and your personalized item is ready for use"
       ],
       monogramTitle: "Permanently etch symbols, names, or initials on small leather goods like luggage tags or keychains for a more elevated, subtle approach to personalization. For leather types and colors compatible with our engraving equipment, please consult at any The Travel Club+ branches. ",
-      monogramBanners: [
-        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-        require('@/assets/images/camp-activities-2.jpg'),
-        require('@/assets/images/camp-activities-3.jpg'),
-      ],
+      monogramBanners: ["souvenir-2","souvenir-2"].map((name) => ({
+        ...responsiveImage(name),
+        alt: "Leather Monogramming",
+        sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+      })),
       monogramItems: [
         "Select: Choose a font and submit your custom text for your item",
         "Configure: We calibrate the laser settings based on the thickness and tone of the leather",
@@ -145,11 +145,11 @@ export default {
         "Clean: The item is wiped down to remove any residue, leaving a clean, professional finish"
       ],
       embroideryTitle: "Customize Spacetastic packing cubes and organizers through The Travel Club Concierge. For  orders and inquiries, please consult at any The Travel Club+ branches.",
-      embroideryBanners: [
-        { ...responsiveImage("camp-activities-1"), alt: "Camp activity" },
-        require('@/assets/images/camp-activities-2.jpg'),
-        require('@/assets/images/camp-activities-3.jpg'),
-      ],
+      embroideryBanners: ["souvenir-6","souvenir-6"].map((name) => ({
+        ...responsiveImage(name),
+        alt: "Leather Monogramming",
+        sizes: "(max-width: 671px) 100vw, (max-width: 1024px) 50vw, 33vw",
+      })),
       embroideryItems: [
         'Select: Click "Customize Now" above and choose the product you want embroidered',
         '"Make It Yours": Submit your custom text and pick the font, size, color, and alignment of your choice',
