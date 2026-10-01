@@ -5,7 +5,7 @@
       <base-nav-content />
     </template>
     <template v-slot:body>
-      <div class="pr-container white-smokey">
+      <div class="pr-container">
         <div class="pr-banner">
           <base-responsive-image
             class="pr-image"
@@ -21,6 +21,7 @@
             </div>
           </div>
         </div>
+        <EventsList eventProperty="enableExperienceAccomodation"/>
         <base-contact-us/>
       </div>
     </template>
@@ -28,11 +29,13 @@
 </template>
 <script>
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
+import EventsList from "@/presentation/pages/page-experiences/components/EventsList.vue";
 export default {
   name: "ExperiencesAccommodationPage",
   components: {
     LayoutVariantTwo,
-  },
+    EventsList
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -162,17 +165,10 @@ export default {
   width: 100%;
   padding: 24px;
 }
-@media (min-width: 672px) and (max-width: 1024px) {
-  .pr-banner {
-    aspect-ratio: 16/9;
-  }
-}
-@media (min-width: 1025px) {
+@media (min-width: 672px) {
   .pr-banner {
     aspect-ratio: 5/1.5;
   }
-}
-@media (min-width: 672px) {
   .pr-banner {
     .pr-banner-content {
       padding-inline: 7% !important;

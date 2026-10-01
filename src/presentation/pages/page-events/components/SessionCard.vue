@@ -22,8 +22,8 @@
                 <span class="inline-icon material-icons-outlined">timer</span>
                 <span class="inline-text">{{ timeDisplay }}</span>
             </div>
-            <div class="card-inline">
-                <span class="inline-text">📍 {{ item?.location.string }}</span>
+            <div class="card-inline" style="margin-top: 6px;">
+                <span class="inline-text grayed">📍 {{ item?.location.string }}</span>
             </div>
             <div class="card-inline" v-if="item.ratingData?.reviewsList.length">
                 <span class="inline-icon primary material-icons">star</span>
@@ -165,202 +165,218 @@ export default {
 </script>
 
 <style scoped lang="scss">
-    .card {
-        background: transparent;
-        height: auto;
-        min-height: 400px;
-        width: 100%;
-        min-width: 300px;
-        display: flex;
-        gap: 16px;
-        flex-direction: column;
-        border-radius: 24px;
-        overflow: hidden;
-        border: 1px solid $secondary-color-20;
-        &:is(.unavailable){
-            background: $secondary-color-30;
-        }
-        .card-img {
-            aspect-ratio: 5/3;
-            background: $secondary-color-20;
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-        }
-        .card-content {
-            flex: 1;
-            width: 100%;
-            color: $secondary-color-100;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            padding: 16px;
-            background: $white;
-            .card-inline {
-                display: flex;
-                align-items: flex-start;
-                gap: 8px;
-                min-height: 16px;
-                .inline-icon {
-                    font-size: 1em !important;
-                    color: $secondary-color-70;
-                    margin-top: 3px;
-                    &.primary {
-                        color: $primary-color-100;
-                    }
-                }
-                .inline-text {
-                    font-size: 1em;
-                    color: $secondary-color-100;
-                    text-align: left;
-                    display: block;
-                    overflow: hidden;
-                    &.primary {
-                        color: $primary-color-100;
-                    }
-                }
-            }
-
-            .card-buttons {
-                width: 100%;
-                display: flex;
-                flex-direction: row;
-                gap: 12px;
-                .card-btn {
-                    flex: 1;
-                    padding-inline: 16px;
-                    padding-block: 6px;
-                    border-radius: 20px;
-                    background: $secondary-color-100;
-                    color: $white;
-                    border: 1px solid transparent;
-                    cursor: pointer;
-                    font-weight: bold;
-                    font-size: small;
-                    text-align: center;
-                    &:hover{
-                        filter: opacity(0.7);
-                    }
-                    &.lite {
-                        color: $secondary-color-100;
-                        background: $white;
-                        border-color: $secondary-color-100;
-                    }
-                }
-            }
-
-            .card-more-title {
-                color: $primary-color-50;
-                font-weight: bold;
-                text-align: center;
-            }
-
-            .card-subtitle {
-                color: $primary-color-100;
-                font-size: 10pt;
-                line-height: 14px;
-                font-weight: bold;
-                text-align: left;
-                text-transform: uppercase;
-            }
-            .card-title {
-                line-height: 22px;
-                font-weight: bold;
-                width: 100%;
-                display: block;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: break-spaces;
-                color: $secondary-color-100;
-                text-align: left;
-                max-height: 70px;
-                cursor: pointer;
-            }
-            .card-price {
-                font-weight: bold;
-                display: block;
-                width: 100%;
-                padding: 10px 0;
-                color: $secondary-color-100;
-                font-size: 1.2em;
-                line-height: 20px;
-                text-align: left;
-            }
-            .card-desc {
-                color: $secondary-color-100;
-                font-size: 10pt;
-                line-height: 14px;
-                text-align: left;
-            }
-            .card-note {
-                font-size: 10pt;
-                line-height: 16px;
-                color: $secondary-color-100;
-                text-align: left;
-                white-space: break-spaces;
-                max-height: 32px;
-                display: block;
-                width: 100%;
-                overflow: hidden;
-                text-overflow: ellipsis;
-            }
-            .card-footnote {
-                font-size: 10pt;
-                line-height: 14px;
-                color: $secondary-color-100;
-                display: flex;
-                align-items: center;
-                &.blue {
-                    color: $info-light;
-                }
-
-                .material-icons {
-                    font-size: 1.4em;
-                }
-
-                * + * {
-                    margin-left: 4px;
-                }
-            }
-        }
+.card {
+    background: transparent;
+    height: 100%;
+    min-height: 400px;
+    width: 100%;
+    min-width: 300px;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    border-radius: 24px;
+    overflow: hidden;
+    border: 1px solid $secondary-color-20;
+    line-height: normal;
+    &:is(.unavailable){
+        background: $secondary-color-30;
     }
-    .rating-legend {
-        display: flex;
-        gap: 4px;
-        padding: 6px 0;
-        .rating-star {
-            color:  $primary-color-100;
-            font-size: 1.1em !important;
-        }
-        .rating-points {
-            font-size: 1em;
-            font-weight: bold;
-            color: $primary-color-100;
-        }
-        .rating-total-reviewers {
-            color: $secondary-color-50;
-            padding: 0 6px;
-            font-size: 0.9em;
-        }
-    }
-    .card-unavailable {
-        width: 100%;
+    .card-img {
         aspect-ratio: 5/3;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 16px;
-        color: $white;
-        .material-icons,
-        .material-icons-outlined {
-            font-size: 6em !important;
+        background: $secondary-color-20;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .trip-info {
+    }
+    .card-content {
+        flex: 1;
+        width: 100%;
+        color: $secondary-color-100;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        padding: 16px;
+        background: $white;
+        .card-inline {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            min-height: 16px;
+            .inline-icon {
+                font-size: 1em !important;
+                color: $secondary-color-70;
+                margin-top: 3px;
+                &.primary {
+                    color: $primary-color-100;
+                }
+            }
+            .inline-text {
+                font-size: 1em;
+                color: $secondary-color-100;
+                text-align: left;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                -webkit-line-clamp: 3;
+                line-clamp: 3;
+                &.primary {
+                    color: $primary-color-100;
+                }
+                &.grayed {
+                    color: $secondary-color-70;
+                    font-size: 0.9em;
+                }
+            }
+        }
+
+        .card-buttons {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            .card-btn {
+                flex: 1;
+                padding-inline: 16px;
+                padding-block: 6px;
+                border-radius: 20px;
+                background: $secondary-color-100;
+                color: $white;
+                border: 1px solid transparent;
+                cursor: pointer;
+                font-weight: bold;
+                font-size: small;
+                text-align: center;
+                &:hover{
+                    filter: opacity(0.7);
+                }
+                &.lite {
+                    color: $secondary-color-100;
+                    background: $white;
+                    border-color: $secondary-color-100;
+                }
+            }
+        }
+
+        .card-more-title {
+            color: $primary-color-50;
             font-weight: bold;
+            text-align: center;
+        }
+
+        .card-subtitle {
+            color: $primary-color-100;
+            font-size: 10pt;
+            line-height: 14px;
+            font-weight: bold;
+            text-align: left;
             text-transform: uppercase;
         }
+        .card-title {
+            line-height: 22px;
+            font-weight: bold;
+            width: 100%;
+            display: block;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: break-spaces;
+            color: $secondary-color-100;
+            text-align: left;
+            max-height: 70px;
+            cursor: pointer;
+        }
+        .card-price {
+            font-weight: bold;
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            color: $secondary-color-100;
+            font-size: 1.2em;
+            line-height: 20px;
+            text-align: left;
+        }
+        .card-desc {
+            color: $secondary-color-100;
+            font-size: 10pt;
+            line-height: 14px;
+            text-align: left;
+        }
+        .card-note {
+            font-size: 10pt;
+            line-height: 16px;
+            color: $secondary-color-100;
+            text-align: left;
+            white-space: break-spaces;
+            max-height: 32px;
+            display: block;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .card-footnote {
+            font-size: 10pt;
+            line-height: 14px;
+            color: $secondary-color-100;
+            display: flex;
+            align-items: center;
+            &.blue {
+                color: $info-light;
+            }
+
+            .material-icons {
+                font-size: 1.4em;
+            }
+
+            * + * {
+                margin-left: 4px;
+            }
+        }
     }
+}
+.rating-legend {
+    display: flex;
+    gap: 4px;
+    padding: 6px 0;
+    .rating-star {
+        color:  $primary-color-100;
+        font-size: 1.1em !important;
+    }
+    .rating-points {
+        font-size: 1em;
+        font-weight: bold;
+        color: $primary-color-100;
+    }
+    .rating-total-reviewers {
+        color: $secondary-color-50;
+        padding: 0 6px;
+        font-size: 0.9em;
+    }
+}
+.card-unavailable {
+    width: 100%;
+    aspect-ratio: 5/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    color: $white;
+    .material-icons,
+    .material-icons-outlined {
+        font-size: 6em !important;
+    }
+    .trip-info {
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+}
+@media (min-width: 672px) and (max-width: 1024px) {
+    .card {
+        min-width: inherit !important;
+        max-width: 100% !important;
+    }
+}
 </style>

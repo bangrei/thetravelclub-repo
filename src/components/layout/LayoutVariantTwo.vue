@@ -139,7 +139,6 @@ export default {
 
 <style scoped lang="scss">
 .sd-base-con {
-  background: #f5f5f5;
   &.blur-con {
     filter: blur(2px);
     -webkit-filter: blur(2px);

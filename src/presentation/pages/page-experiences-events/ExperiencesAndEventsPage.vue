@@ -21,6 +21,8 @@
             </div>
           </div>
         </div>
+        <div class="events-head">Upcoming Events</div>
+        <EventsList :hideCategory="true" eventProperty="displayAsUpcomingEvent"/>
         <base-contact-us/>
       </div>
     </template>
@@ -28,14 +30,23 @@
 </template>
 <script>
 import LayoutVariantTwo from "@/components/layout/LayoutVariantTwo.vue";
+import EventsList from "@/presentation/pages/page-experiences/components/EventsList.vue";
 export default {
   name: "ExperiencesAndEventsPage",
   components: {
     LayoutVariantTwo,
+    EventsList
   },
 };
 </script>
 <style scoped lang="scss">
+.events-head {
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: bold;
+  padding-inline: 20px;
+  margin-block: 20px;
+}
 .pr-container {
   width: 100%;
   display: flex;
@@ -162,18 +173,12 @@ export default {
   width: 100%;
   padding: 24px;
 }
-@media (min-width: 672px) and (max-width: 1024px) {
-  .pr-banner {
-    aspect-ratio: 16/9;
+@media (min-width: 672px) {
+  .events-head {
+    padding-inline: 7%;
   }
-}
-@media (min-width: 1025px) {
   .pr-banner {
     aspect-ratio: 5/1.5;
-  }
-}
-@media (min-width: 672px) {
-  .pr-banner {
     .pr-banner-content {
       padding-inline: 7% !important;
     }
@@ -188,6 +193,11 @@ export default {
   }
   .pr-body {
     padding-inline: 7%;
+  }
+}
+@media (min-width: 672px) and (max-width: 1024px) {
+  .events-head {
+    padding-inline: 20px !important;
   }
 }
 </style>
